@@ -756,6 +756,11 @@
                             <constraint firstItem="1tY-yL-FY8" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="z4S-nM-FbH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginImageView" destination="hpd-qu-cP4" id="FxH-Pd-cbG"/>
+                        <outlet property="loginLabel" destination="dWv-3k-UNi" id="pNs-Oq-Ldl"/>
+                        <outlet property="stackView" destination="FaX-LB-7K4" id="Un3-Xj-rBR"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -826,6 +831,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="20"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addChannelAction:" target="5vJ-yT-2jr" id="PbF-k8-v73"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -896,6 +904,11 @@
                             <constraint firstAttribute="trailing" secondItem="q0k-9R-cWV" secondAttribute="trailing" id="ppo-Xk-wYx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="channelsLabel" destination="cmg-u3-SrK" id="oK6-BH-gmH"/>
+                        <outlet property="tableView" destination="TIS-ae-BQf" id="goR-Qj-7bw"/>
+                        <outlet property="userNameLabel" destination="iZE-tk-ILG" id="N6d-jz-sMC"/>
+                    </connections>
                 </viewController>
                 <customObject id="bCm-JB-TKO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -933,12 +946,12 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6tm-N8-KqS">
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6tm-N8-KqS">
                                 <rect key="frame" x="20" y="28" width="447" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FWf-RG-nCS"/>
                                 </constraints>
-                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" drawsBackground="YES" id="iOd-Pn-WmB">
+                                <textFieldCell key="cell" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" drawsBackground="YES" id="iOd-Pn-WmB">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="ChatColor"/>
@@ -955,14 +968,17 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <color key="contentTintColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="sendMessageAction:" target="qnP-mq-FeB" id="0c6-Vl-Q9q"/>
+                                </connections>
                             </button>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-Vz-KY0">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-Vz-KY0">
                                 <rect key="frame" x="20" y="86" width="495" height="162"/>
                                 <clipView key="contentView" drawsBackground="NO" id="6Ke-cT-Ix9">
                                     <rect key="frame" x="0.0" y="0.0" width="495" height="162"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="dWJ-bI-hnQ">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="dWJ-bI-hnQ">
                                             <rect key="frame" x="0.0" y="0.0" width="495" height="162"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
@@ -1016,6 +1032,12 @@
                             <constraint firstItem="Zn7-Gu-bPt" firstAttribute="top" secondItem="6tm-N8-KqS" secondAttribute="bottom" constant="8" symbolic="YES" id="peA-fu-0Ne"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="channelDescriptionLabel" destination="1qC-uS-nGy" id="FYN-Ym-O10"/>
+                        <outlet property="channelNameLabel" destination="adK-uE-zPG" id="juM-2p-2en"/>
+                        <outlet property="messageTextField" destination="6tm-N8-KqS" id="v5h-LG-Yy0"/>
+                        <outlet property="userTypingLabel" destination="Zn7-Gu-bPt" id="uv6-Pz-QDt"/>
+                    </connections>
                 </viewController>
                 <customObject id="RTk-0A-N5v" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

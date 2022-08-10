@@ -946,19 +946,28 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6tm-N8-KqS">
-                                <rect key="frame" x="20" y="28" width="447" height="50"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="vPG-qV-5sG">
+                                <rect key="frame" x="20" y="28" width="447" height="80"/>
+                                <subviews>
+                                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6tm-N8-KqS">
+                                        <rect key="frame" x="10" y="10" width="427" height="60"/>
+                                        <textFieldCell key="cell" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" drawsBackground="YES" id="iOd-Pn-WmB">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="ChatColor"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="FWf-RG-nCS"/>
+                                    <constraint firstItem="6tm-N8-KqS" firstAttribute="top" secondItem="vPG-qV-5sG" secondAttribute="top" constant="10" id="5FW-aw-gOg"/>
+                                    <constraint firstAttribute="bottom" secondItem="6tm-N8-KqS" secondAttribute="bottom" constant="10" id="8Ty-tc-BFs"/>
+                                    <constraint firstAttribute="height" constant="80" id="Nf4-Nh-IKd"/>
+                                    <constraint firstAttribute="trailing" secondItem="6tm-N8-KqS" secondAttribute="trailing" constant="10" id="mwW-aN-sdP"/>
+                                    <constraint firstItem="6tm-N8-KqS" firstAttribute="leading" secondItem="vPG-qV-5sG" secondAttribute="leading" constant="10" id="ymP-lT-tDa"/>
                                 </constraints>
-                                <textFieldCell key="cell" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" drawsBackground="YES" id="iOd-Pn-WmB">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="ChatColor"/>
-                                </textFieldCell>
-                            </textField>
+                            </customView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YuM-4A-Z7Z">
-                                <rect key="frame" x="475" y="33" width="40" height="40"/>
+                                <rect key="frame" x="475" y="48" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="R9f-aC-Jbn"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="u1f-Bd-MIp"/>
@@ -973,13 +982,13 @@
                                 </connections>
                             </button>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-Vz-KY0">
-                                <rect key="frame" x="20" y="86" width="495" height="162"/>
+                                <rect key="frame" x="20" y="116" width="495" height="132"/>
                                 <clipView key="contentView" drawsBackground="NO" id="6Ke-cT-Ix9">
-                                    <rect key="frame" x="0.0" y="0.0" width="495" height="162"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="495" height="132"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="dWJ-bI-hnQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="495" height="162"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="495" height="132"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="ChatColor"/>
@@ -1013,28 +1022,29 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="YuM-4A-Z7Z" firstAttribute="leading" secondItem="6tm-N8-KqS" secondAttribute="trailing" constant="8" symbolic="YES" id="16X-kp-SaL"/>
                             <constraint firstItem="adK-uE-zPG" firstAttribute="top" secondItem="UZA-oB-7be" secondAttribute="top" constant="20" symbolic="YES" id="6fC-50-53w"/>
                             <constraint firstItem="Zn7-Gu-bPt" firstAttribute="leading" secondItem="UZA-oB-7be" secondAttribute="leading" constant="20" symbolic="YES" id="9Qu-lQ-62N"/>
                             <constraint firstAttribute="trailing" secondItem="Zn7-Gu-bPt" secondAttribute="trailing" constant="20" symbolic="YES" id="DA9-8n-lbI"/>
                             <constraint firstItem="Yas-Vz-KY0" firstAttribute="leading" secondItem="UZA-oB-7be" secondAttribute="leading" constant="20" symbolic="YES" id="Ecr-th-OeU"/>
                             <constraint firstAttribute="trailing" secondItem="YuM-4A-Z7Z" secondAttribute="trailing" constant="20" symbolic="YES" id="G0k-d2-841"/>
-                            <constraint firstItem="YuM-4A-Z7Z" firstAttribute="centerY" secondItem="6tm-N8-KqS" secondAttribute="centerY" id="MbB-5b-E4U"/>
                             <constraint firstAttribute="bottom" secondItem="Zn7-Gu-bPt" secondAttribute="bottom" constant="4" id="OAo-Tj-Zeq"/>
-                            <constraint firstItem="6tm-N8-KqS" firstAttribute="top" secondItem="Yas-Vz-KY0" secondAttribute="bottom" constant="8" symbolic="YES" id="QBA-UD-HPF"/>
+                            <constraint firstItem="vPG-qV-5sG" firstAttribute="top" secondItem="Yas-Vz-KY0" secondAttribute="bottom" constant="8" symbolic="YES" id="PH7-3Q-7h2"/>
+                            <constraint firstItem="vPG-qV-5sG" firstAttribute="leading" secondItem="UZA-oB-7be" secondAttribute="leading" constant="20" symbolic="YES" id="SYa-SU-zz1"/>
                             <constraint firstItem="adK-uE-zPG" firstAttribute="leading" secondItem="UZA-oB-7be" secondAttribute="leading" constant="20" symbolic="YES" id="WT1-AN-fdp"/>
                             <constraint firstItem="1qC-uS-nGy" firstAttribute="leading" secondItem="adK-uE-zPG" secondAttribute="trailing" constant="10" id="eNk-PN-d5y"/>
-                            <constraint firstItem="6tm-N8-KqS" firstAttribute="leading" secondItem="UZA-oB-7be" secondAttribute="leading" constant="20" symbolic="YES" id="eSU-wB-eOR"/>
                             <constraint firstItem="Yas-Vz-KY0" firstAttribute="top" secondItem="adK-uE-zPG" secondAttribute="bottom" constant="8" symbolic="YES" id="hyX-Sb-nxf"/>
                             <constraint firstItem="1qC-uS-nGy" firstAttribute="firstBaseline" secondItem="adK-uE-zPG" secondAttribute="firstBaseline" id="jg2-Kd-4HE"/>
+                            <constraint firstItem="YuM-4A-Z7Z" firstAttribute="leading" secondItem="vPG-qV-5sG" secondAttribute="trailing" constant="8" symbolic="YES" id="kXB-Qb-anh"/>
+                            <constraint firstItem="Zn7-Gu-bPt" firstAttribute="top" secondItem="vPG-qV-5sG" secondAttribute="bottom" constant="8" symbolic="YES" id="keA-x3-eP1"/>
                             <constraint firstAttribute="trailing" secondItem="1qC-uS-nGy" secondAttribute="trailing" constant="20" symbolic="YES" id="n4n-wY-DJv"/>
                             <constraint firstAttribute="trailing" secondItem="Yas-Vz-KY0" secondAttribute="trailing" constant="20" symbolic="YES" id="oaf-Xl-hTa"/>
-                            <constraint firstItem="Zn7-Gu-bPt" firstAttribute="top" secondItem="6tm-N8-KqS" secondAttribute="bottom" constant="8" symbolic="YES" id="peA-fu-0Ne"/>
+                            <constraint firstItem="YuM-4A-Z7Z" firstAttribute="centerY" secondItem="vPG-qV-5sG" secondAttribute="centerY" id="wn3-cR-joq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="channelDescriptionLabel" destination="1qC-uS-nGy" id="FYN-Ym-O10"/>
                         <outlet property="channelNameLabel" destination="adK-uE-zPG" id="juM-2p-2en"/>
+                        <outlet property="messageContainerView" destination="vPG-qV-5sG" id="5L1-Kx-IJJ"/>
                         <outlet property="messageTextField" destination="6tm-N8-KqS" id="v5h-LG-Yy0"/>
                         <outlet property="userTypingLabel" destination="Zn7-Gu-bPt" id="uv6-Pz-QDt"/>
                     </connections>

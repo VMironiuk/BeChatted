@@ -13,11 +13,25 @@ class ChatViewController: NSViewController {
     @IBOutlet private weak var channelDescriptionLabel: NSTextField!
     @IBOutlet private weak var userTypingLabel: NSTextField!
     @IBOutlet private weak var messageTextField: NSTextField!
+    @IBOutlet private weak var messageContainerView: NSView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor(named: "ChatColor")?.cgColor
+        
+        messageContainerView.wantsLayer = true
+        messageContainerView.layer?.borderWidth = 1
+        messageContainerView.layer?.borderColor = NSColor(named: "ChannelColor")?.cgColor
+        messageContainerView.layer?.cornerRadius = 5
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        if let window = messageTextField.window, let fieldEditor = window.fieldEditor(true, for: messageTextField) as? NSTextView {
+            fieldEditor.insertionPointColor = .unemphasizedSelectedTextBackgroundColor
+        }
     }
     
     @IBAction func sendMessageAction(_ sender: NSButton) {

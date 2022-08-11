@@ -14,6 +14,7 @@ class ChatViewController: NSViewController {
     @IBOutlet private weak var userTypingLabel: NSTextField!
     @IBOutlet private weak var messageTextField: NSTextField!
     @IBOutlet private weak var messageContainerView: NSView!
+    @IBOutlet private weak var tableView: NSTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

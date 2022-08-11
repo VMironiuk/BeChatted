@@ -1046,6 +1046,7 @@
                         <outlet property="channelNameLabel" destination="adK-uE-zPG" id="juM-2p-2en"/>
                         <outlet property="messageContainerView" destination="vPG-qV-5sG" id="5L1-Kx-IJJ"/>
                         <outlet property="messageTextField" destination="6tm-N8-KqS" id="v5h-LG-Yy0"/>
+                        <outlet property="tableView" destination="dWJ-bI-hnQ" id="R3b-Vj-pIR"/>
                         <outlet property="userTypingLabel" destination="Zn7-Gu-bPt" id="uv6-Pz-QDt"/>
                     </connections>
                 </viewController>

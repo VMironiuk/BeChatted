@@ -7,6 +7,10 @@
 
 import Cocoa
 
+enum ModalType {
+    case login
+}
+
 class ToolbarViewController: NSViewController {
 
     @IBOutlet private weak var loginImageView: NSImageView!
@@ -43,13 +47,19 @@ class ToolbarViewController: NSViewController {
             modalBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             modalBackgroundView.topAnchor.constraint(equalTo: view.topAnchor)
         ])
+        
+        if let modalType = notification.userInfo?[Constants.UserInfoKey.modalType] as? ModalType {
+            print(modalType)
+        }
     }
     
     @objc private func stackViewDidPressAction() {
+        let userInfo: [AnyHashable : Any] = [Constants.UserInfoKey.modalType : ModalType.login]
+        
         NotificationCenter.default.post(
             name: Constants.Notification.Name.showModal,
             object: nil,
-            userInfo: nil)
+            userInfo: userInfo)
     }
     
 }

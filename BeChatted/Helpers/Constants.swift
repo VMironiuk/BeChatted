@@ -19,4 +19,10 @@ struct Constants {
             static let showModal = NSNotification.Name("BCHShowModalNotificationName")
         }
     }
+    
+    struct UserInfoKey {
+        private init() {}
+        
+        static let modalType = "ModalType"
+    }
 }

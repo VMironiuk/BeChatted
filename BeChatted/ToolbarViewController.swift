@@ -38,7 +38,7 @@ class ToolbarViewController: NSViewController {
         modalBackgroundView = InteractionLockView()
         modalBackgroundView.wantsLayer = true
         modalBackgroundView.layer?.backgroundColor = .black
-        modalBackgroundView.alphaValue = 0.75
+        modalBackgroundView.alphaValue = 0.0
         modalBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(modalBackgroundView)
         NSLayoutConstraint.activate([
@@ -47,6 +47,15 @@ class ToolbarViewController: NSViewController {
             modalBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             modalBackgroundView.topAnchor.constraint(equalTo: view.topAnchor)
         ])
+        
+        NSAnimationContext.runAnimationGroup { [weak self] context in
+            context.duration = 0.3
+            self?.modalBackgroundView.animator().alphaValue = 0.75
+            self?.view.layoutSubtreeIfNeeded()
+        }
+        
+        modalBackgroundView.addGestureRecognizer(
+            NSClickGestureRecognizer(target: self, action: #selector(modalBackgroundViewDidPressAction)))
         
         if let modalType = notification.userInfo?[Constants.UserInfoKey.modalType] as? ModalType {
             print(modalType)
@@ -60,6 +69,18 @@ class ToolbarViewController: NSViewController {
             name: Constants.Notification.Name.showModal,
             object: nil,
             userInfo: userInfo)
+    }
+    
+    @objc private func modalBackgroundViewDidPressAction() {
+        guard modalBackgroundView != .none else { return }
+        NSAnimationContext.runAnimationGroup { [weak self] context in
+            context.duration = 0.3
+            self?.modalBackgroundView.animator().alphaValue = 0.0
+            self?.view.layoutSubtreeIfNeeded()
+        } completionHandler: { [weak self] in
+            self?.modalBackgroundView.removeFromSuperview()
+            self?.modalBackgroundView = nil
+        }
     }
     
 }

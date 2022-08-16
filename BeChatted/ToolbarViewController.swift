@@ -57,8 +57,21 @@ class ToolbarViewController: NSViewController {
         modalBackgroundView.addGestureRecognizer(
             NSClickGestureRecognizer(target: self, action: #selector(modalBackgroundViewDidPressAction)))
         
-        if let modalType = notification.userInfo?[Constants.UserInfoKey.modalType] as? ModalType {
-            print(modalType)
+        guard let modalType = notification.userInfo?[Constants.UserInfoKey.modalType] as? ModalType else {
+            fatalError("Undefined modal type")
+        }
+        switch modalType {
+        case .login:
+            let loginViewController = LoginViewController(nibName: nil, bundle: nil)
+            let loginView = loginViewController.view
+            modalBackgroundView.addSubview(loginView)
+            loginView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                loginView.widthAnchor.constraint(equalToConstant: 500),
+                loginView.heightAnchor.constraint(equalToConstant: 375),
+                loginView.centerXAnchor.constraint(equalTo: modalBackgroundView.centerXAnchor),
+                loginView.centerYAnchor.constraint(equalTo: modalBackgroundView.centerYAnchor),
+            ])
         }
     }
     

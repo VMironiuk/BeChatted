@@ -13,6 +13,8 @@
 		2E161F80289389600069D748 /* BeChattedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E161F7F289389600069D748 /* BeChattedTests.swift */; };
 		2E161F8A289389600069D748 /* BeChattedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E161F89289389600069D748 /* BeChattedUITests.swift */; };
 		2E161F8C289389600069D748 /* BeChattedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E161F8B289389600069D748 /* BeChattedUITestsLaunchTests.swift */; };
+		2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E67DDE928AB4D19009775FC /* LoginViewController.swift */; };
+		2E67DDEC28AB4D3D009775FC /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E67DDEB28AB4D3D009775FC /* LoginView.xib */; };
 		2E79829D28A624A600F10D91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79829C28A624A600F10D91 /* Constants.swift */; };
 		2E7982A028A6279F00F10D91 /* InteractionLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79829F28A6279F00F10D91 /* InteractionLockView.swift */; };
 		2ED59D5128938C42002D5493 /* ToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED59D5028938C41002D5493 /* ToolbarViewController.swift */; };
@@ -49,6 +51,8 @@
 		2E161F85289389600069D748 /* BeChattedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeChattedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E161F89289389600069D748 /* BeChattedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeChattedUITests.swift; sourceTree = "<group>"; };
 		2E161F8B289389600069D748 /* BeChattedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeChattedUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2E67DDE928AB4D19009775FC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2E67DDEB28AB4D3D009775FC /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		2E79829C28A624A600F10D91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2E79829F28A6279F00F10D91 /* InteractionLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionLockView.swift; sourceTree = "<group>"; };
 		2ED59D5028938C41002D5493 /* ToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				2E161F73289389600069D748 /* Main.storyboard */,
 				2E161F76289389600069D748 /* BeChatted.entitlements */,
 				2E79829F28A6279F00F10D91 /* InteractionLockView.swift */,
+				2E67DDE928AB4D19009775FC /* LoginViewController.swift */,
+				2E67DDEB28AB4D3D009775FC /* LoginView.xib */,
 				2E79829E28A6256300F10D91 /* Helpers */,
 			);
 			path = BeChatted;
@@ -250,6 +256,7 @@
 			files = (
 				2E161F72289389600069D748 /* Assets.xcassets in Resources */,
 				2E161F75289389600069D748 /* Main.storyboard in Resources */,
+				2E67DDEC28AB4D3D009775FC /* LoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +285,7 @@
 				2ED59D5328938C97002D5493 /* ChannelsViewController.swift in Sources */,
 				2ED59D5128938C42002D5493 /* ToolbarViewController.swift in Sources */,
 				2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */,
+				2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */,
 				2E161F6E2893895D0069D748 /* AppDelegate.swift in Sources */,
 				2ED59D5728938D7F002D5493 /* MainWindowController.swift in Sources */,
 				2E79829D28A624A600F10D91 /* Constants.swift in Sources */,

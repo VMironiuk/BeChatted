@@ -9,6 +9,10 @@ import Cocoa
 
 class LoginViewController: NSViewController {
     
+    @IBOutlet private weak var userNameTextField: NSTextField!
+    @IBOutlet private weak var passwordTextField: NSSecureTextField!
+    @IBOutlet private weak var loginButton: NSButton!
+    
     override var nibName: NSNib.Name? {
         "LoginView"
     }
@@ -27,6 +31,23 @@ class LoginViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = .white
         view.layer?.cornerRadius = 10
+        
+        // Text fields
+        let attributes = [
+            NSAttributedString.Key.foregroundColor : NSColor.lightGray,
+            NSAttributedString.Key.font : NSFont.systemFont(ofSize: 13)
+        ]
+        let userNamePlaceholderAttributedString = NSAttributedString(string: "Name", attributes: attributes)
+        userNameTextField.placeholderAttributedString = userNamePlaceholderAttributedString
+        let passwordPlaceholderAttributedString = NSAttributedString(string: "Password", attributes: attributes)
+        passwordTextField.placeholderAttributedString = passwordPlaceholderAttributedString
+        
+        // Buttons
+        loginButton.wantsLayer = true
+        loginButton.layer?.backgroundColor = NSColor(named: "ToolbarColor")?.cgColor
+        loginButton.layer?.cornerRadius = 10
     }
     
+    @IBAction func closeButtonAction(_ sender: NSButton) {
+    }
 }

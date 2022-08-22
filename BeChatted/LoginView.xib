@@ -46,6 +46,9 @@
                                         <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
+                                    <connections>
+                                        <outlet property="nextKeyView" destination="bfX-oK-GoX" id="MeH-BP-QRy"/>
+                                    </connections>
                                 </textField>
                                 <box focusRingType="none" appearanceType="aqua" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fxz-SK-2i1">
                                     <rect key="frame" x="0.0" y="-2" width="200" height="5"/>
@@ -80,6 +83,9 @@
                                             <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                         </allowedInputSourceLocales>
                                     </secureTextFieldCell>
+                                    <connections>
+                                        <outlet property="nextKeyView" destination="bzL-fd-ZXV" id="baZ-dy-7Iz"/>
+                                    </connections>
                                 </secureTextField>
                                 <box focusRingType="none" appearanceType="aqua" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="MB5-MC-2YX">
                                     <rect key="frame" x="0.0" y="-2" width="200" height="5"/>
@@ -146,7 +152,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="closeButtonAction:" target="-2" id="9tp-3f-6hD"/>
+                        <action selector="closeButtonAction:" target="-2" id="dcm-gw-ax0"/>
                     </connections>
                 </button>
             </subviews>

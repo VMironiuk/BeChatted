@@ -49,5 +49,6 @@ class LoginViewController: NSViewController {
     }
     
     @IBAction func closeButtonAction(_ sender: NSButton) {
+        NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
     }
 }

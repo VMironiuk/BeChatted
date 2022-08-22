@@ -31,6 +31,12 @@ class ToolbarViewController: NSViewController {
             selector: #selector(onShowModalNotification(_:)),
             name: Constants.Notification.Name.showModal,
             object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onCloseModalBackgroundViewNotification(_:)),
+            name: Constants.Notification.Name.closeModal,
+            object: nil)
     }
     
     @objc private func onShowModalNotification(_ notification: Notification) {
@@ -54,9 +60,6 @@ class ToolbarViewController: NSViewController {
             self?.view.layoutSubtreeIfNeeded()
         }
         
-        modalBackgroundView.addGestureRecognizer(
-            NSClickGestureRecognizer(target: self, action: #selector(modalBackgroundViewDidPressAction)))
-        
         guard let modalType = notification.userInfo?[Constants.UserInfoKey.modalType] as? ModalType else {
             fatalError("Undefined modal type")
         }
@@ -65,6 +68,7 @@ class ToolbarViewController: NSViewController {
             let loginViewController = LoginViewController(nibName: nil, bundle: nil)
             let loginView = loginViewController.view
             modalBackgroundView.addSubview(loginView)
+            self.addChild(loginViewController)
             loginView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 loginView.widthAnchor.constraint(equalToConstant: 500),
@@ -84,15 +88,17 @@ class ToolbarViewController: NSViewController {
             userInfo: userInfo)
     }
     
-    @objc private func modalBackgroundViewDidPressAction() {
+    @objc private func onCloseModalBackgroundViewNotification(_ notification: Notification) {
         guard modalBackgroundView != .none else { return }
         NSAnimationContext.runAnimationGroup { [weak self] context in
             context.duration = 0.3
             self?.modalBackgroundView.animator().alphaValue = 0.0
             self?.view.layoutSubtreeIfNeeded()
         } completionHandler: { [weak self] in
-            self?.modalBackgroundView.removeFromSuperview()
-            self?.modalBackgroundView = nil
+            guard let self = self else { return }
+            self.modalBackgroundView.removeFromSuperview()
+            self.modalBackgroundView = nil
+            self.removeChild(at: self.children.count - 1)
         }
     }
     

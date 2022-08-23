@@ -51,4 +51,14 @@ class LoginViewController: NSViewController {
     @IBAction func closeButtonAction(_ sender: NSButton) {
         NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
     }
+    
+    @IBAction func createAccountButtonAction(_ sender: NSButton) {
+        let userInfo: [AnyHashable : Any] = [Constants.UserInfoKey.modalType : ModalType.createAccount]
+        
+        NotificationCenter.default.post(
+            name: Constants.Notification.Name.showModal,
+            object: nil,
+            userInfo: userInfo)
+    }
+    
 }

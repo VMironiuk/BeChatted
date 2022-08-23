@@ -140,6 +140,9 @@
                         <font key="font" metaFont="systemBold" size="15"/>
                     </buttonCell>
                     <color key="contentTintColor" name="ToolbarColor"/>
+                    <connections>
+                        <action selector="createAccountButtonAction:" target="-2" id="aTm-J6-J8g"/>
+                    </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="FXS-09-k11">
                     <rect key="frame" x="442" y="234" width="30" height="30"/>

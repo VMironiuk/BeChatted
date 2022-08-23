@@ -9,6 +9,7 @@ import Cocoa
 
 enum ModalType {
     case login
+    case createAccount
 }
 
 class ToolbarViewController: NSViewController {
@@ -40,29 +41,34 @@ class ToolbarViewController: NSViewController {
     }
     
     @objc private func onShowModalNotification(_ notification: Notification) {
-        guard modalBackgroundView == .none else { return }
-        modalBackgroundView = InteractionLockView()
-        modalBackgroundView.wantsLayer = true
-        modalBackgroundView.layer?.backgroundColor = .black
-        modalBackgroundView.alphaValue = 0.0
-        modalBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(modalBackgroundView)
-        NSLayoutConstraint.activate([
-            modalBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            modalBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            modalBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            modalBackgroundView.topAnchor.constraint(equalTo: view.topAnchor)
-        ])
-        
-        NSAnimationContext.runAnimationGroup { [weak self] context in
-            context.duration = 0.3
-            self?.modalBackgroundView.animator().alphaValue = 0.75
-            self?.view.layoutSubtreeIfNeeded()
+        if modalBackgroundView == .none {
+            modalBackgroundView = InteractionLockView()
+            modalBackgroundView.wantsLayer = true
+            modalBackgroundView.layer?.backgroundColor = .black
+            modalBackgroundView.alphaValue = 0.0
+            modalBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(modalBackgroundView)
+            NSLayoutConstraint.activate([
+                modalBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                modalBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                modalBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                modalBackgroundView.topAnchor.constraint(equalTo: view.topAnchor)
+            ])
+            
+            NSAnimationContext.runAnimationGroup { [weak self] context in
+                context.duration = 0.3
+                self?.modalBackgroundView.animator().alphaValue = 0.75
+                self?.view.layoutSubtreeIfNeeded()
+            }
         }
         
         guard let modalType = notification.userInfo?[Constants.UserInfoKey.modalType] as? ModalType else {
             fatalError("Undefined modal type")
         }
+        
+        modalBackgroundView.subviews.forEach { $0.removeFromSuperview() }
+        modalBackgroundView.subviews = []
+        
         switch modalType {
         case .login:
             let loginViewController = LoginViewController(nibName: nil, bundle: nil)
@@ -75,6 +81,19 @@ class ToolbarViewController: NSViewController {
                 loginView.heightAnchor.constraint(equalToConstant: 375),
                 loginView.centerXAnchor.constraint(equalTo: modalBackgroundView.centerXAnchor),
                 loginView.centerYAnchor.constraint(equalTo: modalBackgroundView.centerYAnchor),
+            ])
+            
+        case .createAccount:
+            let createAccountViewController = CreateAccountViewController(nibName: nil, bundle: nil)
+            let createAccountView = createAccountViewController.view
+            modalBackgroundView.addSubview(createAccountView)
+            self.addChild(createAccountViewController)
+            createAccountView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                createAccountView.widthAnchor.constraint(equalToConstant: 500),
+                createAccountView.heightAnchor.constraint(equalToConstant: 375),
+                createAccountView.centerXAnchor.constraint(equalTo: modalBackgroundView.centerXAnchor),
+                createAccountView.centerYAnchor.constraint(equalTo: modalBackgroundView.centerYAnchor),
             ])
         }
     }
@@ -101,5 +120,4 @@ class ToolbarViewController: NSViewController {
             self.removeChild(at: self.children.count - 1)
         }
     }
-    
 }

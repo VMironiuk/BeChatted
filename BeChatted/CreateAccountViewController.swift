@@ -9,6 +9,13 @@ import Cocoa
 
 class CreateAccountViewController: NSViewController {
     
+    @IBOutlet private weak var nameTextField: NSTextField!
+    @IBOutlet private weak var emailTextField: NSTextField!
+    @IBOutlet private weak var passwordTextField: NSSecureTextField!
+    @IBOutlet private weak var createAccountButton: NSButton!
+    @IBOutlet private weak var chooseAvatarButton: NSButton!
+    @IBOutlet private weak var profileAvatarImageView: NSImageView!
+    
     override var nibName: NSNib.Name? {
         "CreateAccountView"
     }
@@ -27,6 +34,33 @@ class CreateAccountViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = .white
         view.layer?.cornerRadius = 10
+        
+        // Text fields
+        let attributes = [
+            NSAttributedString.Key.foregroundColor : NSColor.lightGray,
+            NSAttributedString.Key.font : NSFont.systemFont(ofSize: 13)
+        ]
+        let namePlaceholderAttributedString = NSAttributedString(string: "Name", attributes: attributes)
+        nameTextField.placeholderAttributedString = namePlaceholderAttributedString
+        let emailPlaceholderAttributedString = NSAttributedString(string: "Email", attributes: attributes)
+        emailTextField.placeholderAttributedString = emailPlaceholderAttributedString
+        let passwordPlaceholderAttributedString = NSAttributedString(string: "Password", attributes: attributes)
+        passwordTextField.placeholderAttributedString = passwordPlaceholderAttributedString
+        
+        // Buttons
+        createAccountButton.wantsLayer = true
+        createAccountButton.layer?.backgroundColor = NSColor(named: "ToolbarColor")?.cgColor
+        createAccountButton.layer?.cornerRadius = 10
+        
+        chooseAvatarButton.wantsLayer = true
+        chooseAvatarButton.layer?.backgroundColor = NSColor(named: "ToolbarColor")?.cgColor
+        chooseAvatarButton.layer?.cornerRadius = 10
+        
+        // Image views
+        profileAvatarImageView.wantsLayer = true
+        profileAvatarImageView.layer?.borderColor = NSColor.gray.cgColor
+        profileAvatarImageView.layer?.borderWidth = 3
+        profileAvatarImageView.layer?.cornerRadius = 10
     }
 
     @IBAction func closeButtonAction(_ sender: NSButton) {

@@ -77,8 +77,8 @@ class ToolbarViewController: NSViewController {
             self.addChild(loginViewController)
             loginView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                loginView.widthAnchor.constraint(equalToConstant: 500),
-                loginView.heightAnchor.constraint(equalToConstant: 375),
+                loginView.widthAnchor.constraint(equalToConstant: 400),
+                loginView.heightAnchor.constraint(equalToConstant: 275),
                 loginView.centerXAnchor.constraint(equalTo: modalBackgroundView.centerXAnchor),
                 loginView.centerYAnchor.constraint(equalTo: modalBackgroundView.centerYAnchor),
             ])
@@ -90,8 +90,8 @@ class ToolbarViewController: NSViewController {
             self.addChild(createAccountViewController)
             createAccountView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                createAccountView.widthAnchor.constraint(equalToConstant: 500),
-                createAccountView.heightAnchor.constraint(equalToConstant: 375),
+                createAccountView.widthAnchor.constraint(equalToConstant: 400),
+                createAccountView.heightAnchor.constraint(equalToConstant: 275),
                 createAccountView.centerXAnchor.constraint(equalTo: modalBackgroundView.centerXAnchor),
                 createAccountView.centerYAnchor.constraint(equalTo: modalBackgroundView.centerYAnchor),
             ])

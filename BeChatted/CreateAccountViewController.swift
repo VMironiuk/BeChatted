@@ -29,4 +29,7 @@ class CreateAccountViewController: NSViewController {
         view.layer?.cornerRadius = 10
     }
 
+    @IBAction func closeButtonAction(_ sender: NSButton) {
+        NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
+    }
 }

@@ -15,7 +15,30 @@
         <customView id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="vj7-06-IDf">
+                    <rect key="frame" x="442" y="234" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="HwH-aP-p1f"/>
+                        <constraint firstAttribute="width" constant="30" id="bRg-Wl-ZcN"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="mac-loginClose" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="67c-sM-3AK">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="closeButtonAction:" target="-2" id="ded-Qe-KcT"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vj7-06-IDf" secondAttribute="trailing" constant="8" id="aV2-pl-Qt6"/>
+                <constraint firstItem="vj7-06-IDf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="obs-gC-oMJ"/>
+            </constraints>
             <point key="canvasLocation" x="139" y="154"/>
         </customView>
     </objects>
+    <resources>
+        <image name="mac-loginClose" width="40" height="40"/>
+    </resources>
 </document>

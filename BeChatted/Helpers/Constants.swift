@@ -26,4 +26,18 @@ struct Constants {
         
         static let modalType = "ModalType"
     }
+    
+    struct URL {
+        private init() {}
+        
+        static let baseURL = "http://localhost:3005"
+    }
+    
+    struct Endpoint {
+        private init() {}
+        
+        static let registerAccount = "/v1/account/register"
+        static let loginUser = "/v1/account/login"
+        static let addUser = "/v1/user/add"
+    }
 }

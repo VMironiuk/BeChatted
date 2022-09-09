@@ -16,6 +16,8 @@ class CreateAccountViewController: NSViewController {
     @IBOutlet private weak var chooseAvatarButton: NSButton!
     @IBOutlet private weak var profileAvatarImageView: NSImageView!
     
+    private let authService = AuthService()
+    
     override var nibName: NSNib.Name? {
         "CreateAccountView"
     }
@@ -65,5 +67,41 @@ class CreateAccountViewController: NSViewController {
 
     @IBAction func closeButtonAction(_ sender: NSButton) {
         NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
+    }
+    
+    @IBAction func createAccountButtonAction(_ sender: NSButton) {
+        registerAccount()
+    }
+    
+    private func registerAccount() {
+        authService.registerAccount(withEmail: emailTextField.stringValue, password: passwordTextField.stringValue) { [weak self] result in
+            guard let self = self, let isSuccess = try? result.get(), isSuccess else { return }
+            DispatchQueue.main.async {
+                self.loginUser()
+            }
+        }
+    }
+    
+    private func loginUser() {
+        authService.loginUser(withEmail: emailTextField.stringValue, password: passwordTextField.stringValue) { [weak self] result in
+            guard let self = self, let isSuccess = try? result.get(), isSuccess else { return }
+            DispatchQueue.main.async {
+                self.addUser()
+            }
+        }
+    }
+    
+    private func addUser() {
+        authService.addUser(
+            withName: nameTextField.stringValue,
+            email: emailTextField.stringValue,
+            avatarName: "avatarName",
+            avatarColor: "avatarColor"
+        ) { result in
+            guard let isSuccess = try? result.get(), isSuccess else { return }
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
+            }
+        }
     }
 }

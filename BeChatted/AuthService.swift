@@ -7,9 +7,13 @@
 
 import Foundation
 
-struct AuthService {
+typealias AuthServiceCompletion = (Result<Bool, Error>) -> Void
+
+final class AuthService {
     
-    func registerAccount(with email: String, password: String) {
+    private(set) var authToken: String = ""
+    
+    func registerAccount(withEmail email: String, password: String, completion: @escaping AuthServiceCompletion) {
         let account = RegisterAccount(email: email, password: password)
         
         guard let url = URL(string: "\(Constants.URL.baseURL)\(Constants.Endpoint.registerAccount)"),
@@ -24,27 +28,32 @@ struct AuthService {
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
-                print("Error:")
+                print("[registerAccount]: Error:")
                 print("    \(error.localizedDescription)")
                 print()
+                completion(.failure(error))
                 return
             }
             
             if let response = response as? HTTPURLResponse {
-                print("Response:")
+                print("[registerAccount]: Response:")
                 print("    Status Code: \(response.statusCode)")
                 print()
             }
             
             if let data = data {
-                print("Data:")
+                print("[registerAccount]: Data:")
                 print("    \(String(decoding: data, as: UTF8.self))")
                 print()
+                completion(.success(true))
+                return
             }
+            
+            completion(.success(false))
         }.resume()
     }
     
-    func loginUser(with email: String, password: String) {
+    func loginUser(withEmail email: String, password: String, completion: @escaping AuthServiceCompletion) {
         let account = LoginUser(email: email, password: password)
         
         guard let url = URL(string: "\(Constants.URL.baseURL)\(Constants.Endpoint.loginUser)"),
@@ -57,29 +66,46 @@ struct AuthService {
         urlRequest.httpBody = httpBody
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
             if let error = error {
-                print("Error:")
+                print("[loginUser]: Error:")
                 print("    \(error.localizedDescription)")
                 print()
+                completion(.failure(error))
                 return
             }
             
             if let response = response as? HTTPURLResponse {
-                print("Response:")
+                print("[loginUser]: Response:")
                 print("    Status Code: \(response.statusCode)")
                 print()
             }
             
             if let data = data {
-                print("Data:")
+                print("[loginUser]: Data:")
                 print("    \(String(decoding: data, as: UTF8.self))")
                 print()
+                
+                guard let loginUserResponse = try? JSONDecoder().decode(LoginUserResponse.self, from: data) else {
+                    completion(.success(false))
+                    return
+                }
+                self?.authToken = loginUserResponse.token
+                completion(.success(true))
+                return
             }
+            
+            completion(.success(false))
         }.resume()
     }
     
-    func addUser(with name: String, email: String, avatarName: String, avatarColor: String) {
+    func addUser(
+        withName name: String,
+        email: String,
+        avatarName: String,
+        avatarColor: String,
+        completion: @escaping AuthServiceCompletion
+    ) {
         let account = AddUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor)
         
         guard let url = URL(string: "\(Constants.URL.baseURL)\(Constants.Endpoint.addUser)"),
@@ -91,27 +117,32 @@ struct AuthService {
         urlRequest.httpMethod = "POST"
         urlRequest.httpBody = httpBody
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        urlRequest.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
-                print("Error:")
+                print("[addUser]: Error:")
                 print("    \(error.localizedDescription)")
                 print()
+                completion(.failure(error))
                 return
             }
             
             if let response = response as? HTTPURLResponse {
-                print("Response:")
+                print("[addUser]: Response:")
                 print("    Status Code: \(response.statusCode)")
                 print()
             }
             
             if let data = data {
-                print("Data:")
+                print("[addUser]: Data:")
                 print("    \(String(decoding: data, as: UTF8.self))")
                 print()
+                completion(.success(true))
+                return
             }
+            
+            completion(.success(false))
         }.resume()
     }
 }

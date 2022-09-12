@@ -39,5 +39,6 @@ struct Constants {
         static let registerAccount = "/v1/account/register"
         static let loginUser = "/v1/account/login"
         static let addUser = "/v1/user/add"
+        static let findUserByEmail = "/v1/user/byEmail/"
     }
 }

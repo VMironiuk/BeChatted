@@ -61,4 +61,12 @@ class LoginViewController: NSViewController {
             userInfo: userInfo)
     }
     
+    @IBAction func loginButtonAction(_ sender: NSButton) {
+        AuthService.shared.findUser(byEmail: userNameTextField.stringValue) { result in
+            guard let isSuccess = try? result.get(), isSuccess else { return }
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
+            }
+        }
+    }
 }

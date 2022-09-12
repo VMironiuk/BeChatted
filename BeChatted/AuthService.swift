@@ -10,8 +10,12 @@ import Foundation
 typealias AuthServiceCompletion = (Result<Bool, Error>) -> Void
 
 final class AuthService {
+    static let shared = AuthService()
     
     private(set) var authToken: String = ""
+    private(set) var currentUser: CurrentUser = CurrentUser(name: "", email: "")
+    
+    private init() {}
     
     func registerAccount(withEmail email: String, password: String, completion: @escaping AuthServiceCompletion) {
         let account = RegisterAccount(email: email, password: password)
@@ -139,6 +143,52 @@ final class AuthService {
                 print("    \(String(decoding: data, as: UTF8.self))")
                 print()
                 completion(.success(true))
+                return
+            }
+            
+            completion(.success(false))
+        }.resume()
+    }
+    
+    func findUser(byEmail email: String, completion: @escaping AuthServiceCompletion) {
+        guard let url = URL(string: "\(Constants.URL.baseURL)\(Constants.Endpoint.findUserByEmail)\(email)") else {
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
+            if let error = error {
+                print("[findUserByEmail]: Error:")
+                print("    \(error.localizedDescription)")
+                print()
+                completion(.failure(error))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                print("[findUserByEmail]: Response:")
+                print("    Status Code: \(response.statusCode)")
+                print()
+            }
+            
+            if let data = data {
+                print("[findUserByEmail]: Data:")
+                print("    \(String(decoding: data, as: UTF8.self))")
+                print()
+
+                guard let findUserByEmailResponse = try? JSONDecoder().decode(FindUserByEmailResponse.self, from: data) else {
+                    completion(.success(false))
+                    return
+                }
+                
+                self?.currentUser = CurrentUser(name: findUserByEmailResponse.name, email: findUserByEmailResponse.email)
+                completion(.success(true))
+                print(findUserByEmailResponse.name)
+                print(findUserByEmailResponse.email)
                 return
             }
             

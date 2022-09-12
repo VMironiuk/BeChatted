@@ -18,6 +18,9 @@
 		2E69E54128C9B4CB00B44A4E /* LoginUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */; };
 		2E79829D28A624A600F10D91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79829C28A624A600F10D91 /* Constants.swift */; };
 		2E7982A028A6279F00F10D91 /* InteractionLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79829F28A6279F00F10D91 /* InteractionLockView.swift */; };
+		2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */; };
+		2E8A6EE728CEFD3B00AE0B51 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */; };
+		2E8A6EE928CEFDCF00AE0B51 /* FindUserByEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */; };
 		2E8E52BF28C7138B00805941 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E52BE28C7138B00805941 /* LoginUser.swift */; };
 		2E8E52C128C7165000805941 /* AddUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E52C028C7165000805941 /* AddUser.swift */; };
 		2E9C5BFB28B4A27500F400E1 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C5BFA28B4A27500F400E1 /* CreateAccountViewController.swift */; };
@@ -63,6 +66,9 @@
 		2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserResponse.swift; sourceTree = "<group>"; };
 		2E79829C28A624A600F10D91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2E79829F28A6279F00F10D91 /* InteractionLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionLockView.swift; sourceTree = "<group>"; };
+		2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserByEmail.swift; sourceTree = "<group>"; };
+		2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserByEmailResponse.swift; sourceTree = "<group>"; };
 		2E8E52BE28C7138B00805941 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		2E8E52C028C7165000805941 /* AddUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUser.swift; sourceTree = "<group>"; };
 		2E9C5BFA28B4A27500F400E1 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -174,7 +180,10 @@
 				2EA67D1928C1CA6A00614269 /* RegisterAccount.swift */,
 				2E8E52BE28C7138B00805941 /* LoginUser.swift */,
 				2E8E52C028C7165000805941 /* AddUser.swift */,
+				2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */,
 				2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */,
+				2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */,
+				2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,16 +323,19 @@
 				2E7982A028A6279F00F10D91 /* InteractionLockView.swift in Sources */,
 				2E69E54128C9B4CB00B44A4E /* LoginUserResponse.swift in Sources */,
 				2ED59D5328938C97002D5493 /* ChannelsViewController.swift in Sources */,
+				2E8A6EE928CEFDCF00AE0B51 /* FindUserByEmailResponse.swift in Sources */,
 				2EA67D1A28C1CA6A00614269 /* RegisterAccount.swift in Sources */,
 				2ED59D5128938C42002D5493 /* ToolbarViewController.swift in Sources */,
 				2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */,
 				2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */,
+				2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */,
 				2E8E52BF28C7138B00805941 /* LoginUser.swift in Sources */,
 				2E161F6E2893895D0069D748 /* AppDelegate.swift in Sources */,
 				2E9C5BFB28B4A27500F400E1 /* CreateAccountViewController.swift in Sources */,
 				2EA67D1728C1C5F100614269 /* AuthService.swift in Sources */,
 				2ED59D5728938D7F002D5493 /* MainWindowController.swift in Sources */,
 				2E8E52C128C7165000805941 /* AddUser.swift in Sources */,
+				2E8A6EE728CEFD3B00AE0B51 /* CurrentUser.swift in Sources */,
 				2E79829D28A624A600F10D91 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

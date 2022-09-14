@@ -10,4 +10,5 @@ import Foundation
 struct CurrentUser {
     let name: String
     let email: String
+    let avatarName: String
 }

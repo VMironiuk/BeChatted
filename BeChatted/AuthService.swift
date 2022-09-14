@@ -13,7 +13,7 @@ final class AuthService {
     static let shared = AuthService()
     
     private(set) var authToken: String = ""
-    private(set) var currentUser: CurrentUser = CurrentUser(name: "", email: "")
+    private(set) var currentUser: CurrentUser = CurrentUser(name: "", email: "", avatarName: "")
     private(set) var isLoggedIn: Bool = false
     
     private init() {}
@@ -186,7 +186,10 @@ final class AuthService {
                     return
                 }
                 
-                self?.currentUser = CurrentUser(name: findUserByEmailResponse.name, email: findUserByEmailResponse.email)
+                self?.currentUser = CurrentUser(
+                    name: findUserByEmailResponse.name,
+                    email: findUserByEmailResponse.email,
+                    avatarName: findUserByEmailResponse.avatarName)
                 self?.isLoggedIn = true
                 completion(.success(true))
                 print(findUserByEmailResponse.name)

@@ -38,6 +38,12 @@ class ToolbarViewController: NSViewController {
             selector: #selector(onCloseModalBackgroundViewNotification(_:)),
             name: Constants.Notification.Name.closeModal,
             object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onLoggedInUserDidChange(_:)),
+            name: Constants.Notification.Name.loggedInUserDidChange,
+            object: nil)
     }
     
     @objc private func onShowModalNotification(_ notification: Notification) {
@@ -118,6 +124,21 @@ class ToolbarViewController: NSViewController {
             self.modalBackgroundView.removeFromSuperview()
             self.modalBackgroundView = nil
             self.removeChild(at: self.children.count - 1)
+        }
+    }
+    
+    @objc private func onLoggedInUserDidChange(_ notification: Notification) {
+        if AuthService.shared.isLoggedIn {
+            loginLabel.stringValue = AuthService.shared.currentUser.name
+            loginImageView.image = NSImage(named: AuthService.shared.currentUser.avatarName)
+            loginImageView.wantsLayer = true
+            loginImageView.layer?.cornerRadius = 5
+            loginImageView.layer?.borderWidth = 1
+            loginImageView.layer?.borderColor = NSColor.secondaryLabelColor.cgColor
+            // TODO: set avatar color
+        } else {
+            loginLabel.stringValue = "Login"
+            loginImageView.image = NSImage(named: "profileDefault")
         }
     }
 }

@@ -18,6 +18,7 @@ struct Constants {
             
             static let showModal = NSNotification.Name("BCHShowModalNotificationName")
             static let closeModal = NSNotification.Name("BCHCloseModalNotificationName")
+            static let loggedInUserDidChange = NSNotification.Name("BCHLoggedInUserDidChangeNotificationName")
         }
     }
     

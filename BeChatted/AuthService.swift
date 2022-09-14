@@ -14,6 +14,7 @@ final class AuthService {
     
     private(set) var authToken: String = ""
     private(set) var currentUser: CurrentUser = CurrentUser(name: "", email: "")
+    private(set) var isLoggedIn: Bool = false
     
     private init() {}
     
@@ -186,6 +187,7 @@ final class AuthService {
                 }
                 
                 self?.currentUser = CurrentUser(name: findUserByEmailResponse.name, email: findUserByEmailResponse.email)
+                self?.isLoggedIn = true
                 completion(.success(true))
                 print(findUserByEmailResponse.name)
                 print(findUserByEmailResponse.email)

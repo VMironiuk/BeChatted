@@ -9,7 +9,7 @@ import Cocoa
 
 class LoginViewController: NSViewController {
     
-    @IBOutlet private weak var userNameTextField: NSTextField!
+    @IBOutlet private weak var emailTextField: NSTextField!
     @IBOutlet private weak var passwordTextField: NSSecureTextField!
     @IBOutlet private weak var loginButton: NSButton!
     
@@ -37,8 +37,8 @@ class LoginViewController: NSViewController {
             NSAttributedString.Key.foregroundColor : NSColor.lightGray,
             NSAttributedString.Key.font : NSFont.systemFont(ofSize: 13)
         ]
-        let userNamePlaceholderAttributedString = NSAttributedString(string: "Name", attributes: attributes)
-        userNameTextField.placeholderAttributedString = userNamePlaceholderAttributedString
+        let userNamePlaceholderAttributedString = NSAttributedString(string: "Email", attributes: attributes)
+        emailTextField.placeholderAttributedString = userNamePlaceholderAttributedString
         let passwordPlaceholderAttributedString = NSAttributedString(string: "Password", attributes: attributes)
         passwordTextField.placeholderAttributedString = passwordPlaceholderAttributedString
         
@@ -62,10 +62,11 @@ class LoginViewController: NSViewController {
     }
     
     @IBAction func loginButtonAction(_ sender: NSButton) {
-        AuthService.shared.findUser(byEmail: userNameTextField.stringValue) { result in
+        AuthService.shared.findUser(byEmail: emailTextField.stringValue) { result in
             guard let isSuccess = try? result.get(), isSuccess else { return }
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
+                NotificationCenter.default.post(name: Constants.Notification.Name.loggedInUserDidChange, object: nil)
             }
         }
     }

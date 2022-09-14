@@ -99,7 +99,7 @@ class CreateAccountViewController: NSViewController {
         AuthService.shared.addUser(
             withName: nameTextField.stringValue,
             email: emailTextField.stringValue,
-            avatarName: "avatarName",
+            avatarName: "dark5",
             avatarColor: "avatarColor"
         ) { result in
             guard let isSuccess = try? result.get(), isSuccess else { return }

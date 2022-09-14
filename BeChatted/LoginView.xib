@@ -9,9 +9,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LoginViewController" customModule="BeChatted" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="bzL-fd-ZXV" id="ORx-Wv-SqU"/>
                 <outlet property="loginButton" destination="AfL-c5-KKS" id="WDz-3r-51j"/>
                 <outlet property="passwordTextField" destination="bfX-oK-GoX" id="Juu-Xk-FTA"/>
-                <outlet property="userNameTextField" destination="bzL-fd-ZXV" id="ORx-Wv-SqU"/>
                 <outlet property="view" destination="c22-O7-iKe" id="3df-gS-iPM"/>
             </connections>
         </customObject>
@@ -41,7 +41,7 @@
                                         <constraint firstAttribute="height" constant="22" id="QeC-nu-qX7"/>
                                         <constraint firstAttribute="width" constant="200" id="d6s-is-aHM"/>
                                     </constraints>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" placeholderString="Name" id="MZA-me-GbY">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" placeholderString="Email" id="MZA-me-GbY">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

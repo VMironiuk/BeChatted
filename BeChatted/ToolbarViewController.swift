@@ -10,6 +10,7 @@ import Cocoa
 enum ModalType {
     case login
     case createAccount
+    case profile
 }
 
 class ToolbarViewController: NSViewController {
@@ -75,37 +76,36 @@ class ToolbarViewController: NSViewController {
         modalBackgroundView.subviews.forEach { $0.removeFromSuperview() }
         modalBackgroundView.subviews = []
         
+        let viewController: NSViewController
         switch modalType {
         case .login:
-            let loginViewController = LoginViewController(nibName: nil, bundle: nil)
-            let loginView = loginViewController.view
-            modalBackgroundView.addSubview(loginView)
-            self.addChild(loginViewController)
-            loginView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                loginView.widthAnchor.constraint(equalToConstant: 400),
-                loginView.heightAnchor.constraint(equalToConstant: 275),
-                loginView.centerXAnchor.constraint(equalTo: modalBackgroundView.centerXAnchor),
-                loginView.centerYAnchor.constraint(equalTo: modalBackgroundView.centerYAnchor),
-            ])
-            
+            viewController = LoginViewController(nibName: nil, bundle: nil)
         case .createAccount:
-            let createAccountViewController = CreateAccountViewController(nibName: nil, bundle: nil)
-            let createAccountView = createAccountViewController.view
-            modalBackgroundView.addSubview(createAccountView)
-            self.addChild(createAccountViewController)
-            createAccountView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                createAccountView.widthAnchor.constraint(equalToConstant: 400),
-                createAccountView.heightAnchor.constraint(equalToConstant: 275),
-                createAccountView.centerXAnchor.constraint(equalTo: modalBackgroundView.centerXAnchor),
-                createAccountView.centerYAnchor.constraint(equalTo: modalBackgroundView.centerYAnchor),
-            ])
+            viewController = CreateAccountViewController(nibName: nil, bundle: nil)
+        case .profile:
+            viewController = ProfileViewController(nibName: nil, bundle: nil)
         }
+        
+        let childView = viewController.view
+        modalBackgroundView.addSubview(childView)
+        self.addChild(viewController)
+        childView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            childView.widthAnchor.constraint(equalToConstant: 400),
+            childView.heightAnchor.constraint(equalToConstant: 275),
+            childView.centerXAnchor.constraint(equalTo: modalBackgroundView.centerXAnchor),
+            childView.centerYAnchor.constraint(equalTo: modalBackgroundView.centerYAnchor),
+        ])
     }
     
     @objc private func stackViewDidPressAction() {
-        let userInfo: [AnyHashable : Any] = [Constants.UserInfoKey.modalType : ModalType.login]
+        var userInfo: [AnyHashable : Any] = [:]
+        
+        if AuthService.shared.isLoggedIn {
+            userInfo = [Constants.UserInfoKey.modalType : ModalType.profile]
+        } else {
+            userInfo = [Constants.UserInfoKey.modalType : ModalType.login]
+        }
         
         NotificationCenter.default.post(
             name: Constants.Notification.Name.showModal,

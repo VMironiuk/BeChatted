@@ -27,6 +27,8 @@
 		2E9C5BFD28B4A28D00F400E1 /* CreateAccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9C5BFC28B4A28D00F400E1 /* CreateAccountView.xib */; };
 		2EA67D1728C1C5F100614269 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA67D1628C1C5F100614269 /* AuthService.swift */; };
 		2EA67D1A28C1CA6A00614269 /* RegisterAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA67D1928C1CA6A00614269 /* RegisterAccount.swift */; };
+		2EA7AE7D28D43E9400B8BC0F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7AE7C28D43E9400B8BC0F /* ProfileViewController.swift */; };
+		2EA7AE7F28D43EA800B8BC0F /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA7AE7E28D43EA800B8BC0F /* ProfileView.xib */; };
 		2ED59D5128938C42002D5493 /* ToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED59D5028938C41002D5493 /* ToolbarViewController.swift */; };
 		2ED59D5328938C97002D5493 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED59D5228938C97002D5493 /* ChannelsViewController.swift */; };
 		2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED59D5428938D06002D5493 /* ChatViewController.swift */; };
@@ -75,6 +77,8 @@
 		2E9C5BFC28B4A28D00F400E1 /* CreateAccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountView.xib; sourceTree = "<group>"; };
 		2EA67D1628C1C5F100614269 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2EA67D1928C1CA6A00614269 /* RegisterAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAccount.swift; sourceTree = "<group>"; };
+		2EA7AE7C28D43E9400B8BC0F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2EA7AE7E28D43EA800B8BC0F /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		2ED59D5028938C41002D5493 /* ToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarViewController.swift; sourceTree = "<group>"; };
 		2ED59D5228938C97002D5493 /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		2ED59D5428938D06002D5493 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				2E67DDEB28AB4D3D009775FC /* LoginView.xib */,
 				2E9C5BFA28B4A27500F400E1 /* CreateAccountViewController.swift */,
 				2E9C5BFC28B4A28D00F400E1 /* CreateAccountView.xib */,
+				2EA7AE7C28D43E9400B8BC0F /* ProfileViewController.swift */,
+				2EA7AE7E28D43EA800B8BC0F /* ProfileView.xib */,
 				2EA67D1628C1C5F100614269 /* AuthService.swift */,
 				2EA67D1828C1CA5800614269 /* Models */,
 				2E79829E28A6256300F10D91 /* Helpers */,
@@ -293,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E161F72289389600069D748 /* Assets.xcassets in Resources */,
+				2EA7AE7F28D43EA800B8BC0F /* ProfileView.xib in Resources */,
 				2E161F75289389600069D748 /* Main.storyboard in Resources */,
 				2E9C5BFD28B4A28D00F400E1 /* CreateAccountView.xib in Resources */,
 				2E67DDEC28AB4D3D009775FC /* LoginView.xib in Resources */,
@@ -326,6 +333,7 @@
 				2E8A6EE928CEFDCF00AE0B51 /* FindUserByEmailResponse.swift in Sources */,
 				2EA67D1A28C1CA6A00614269 /* RegisterAccount.swift in Sources */,
 				2ED59D5128938C42002D5493 /* ToolbarViewController.swift in Sources */,
+				2EA7AE7D28D43E9400B8BC0F /* ProfileViewController.swift in Sources */,
 				2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */,
 				2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */,
 				2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */,

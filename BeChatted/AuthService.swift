@@ -200,4 +200,10 @@ final class AuthService {
             completion(.success(false))
         }.resume()
     }
+    
+    func logoutUser() {
+        authToken = ""
+        currentUser = CurrentUser(name: "", email: "", avatarName: "")
+        isLoggedIn = false
+    }
 }

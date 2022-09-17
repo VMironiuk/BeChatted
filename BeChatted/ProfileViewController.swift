@@ -56,5 +56,8 @@ class ProfileViewController: NSViewController {
     }
     
     @IBAction func logoutButtonAction(_ sender: NSButton) {
+        AuthService.shared.logoutUser()
+        NotificationCenter.default.post(name: Constants.Notification.Name.loggedInUserDidChange, object: nil)
+        NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
     }
 }

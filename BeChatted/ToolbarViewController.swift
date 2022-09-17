@@ -26,6 +26,11 @@ class ToolbarViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor(named: "ToolbarColor")?.cgColor
         
+        loginImageView.wantsLayer = true
+        loginImageView.layer?.cornerRadius = 5
+        loginImageView.layer?.borderWidth = 1
+        loginImageView.layer?.borderColor = NSColor.secondaryLabelColor.cgColor
+        
         stackView.addGestureRecognizer(NSClickGestureRecognizer(target: self, action: #selector(stackViewDidPressAction)))
         
         NotificationCenter.default.addObserver(
@@ -131,10 +136,6 @@ class ToolbarViewController: NSViewController {
         if AuthService.shared.isLoggedIn {
             loginLabel.stringValue = AuthService.shared.currentUser.name
             loginImageView.image = NSImage(named: AuthService.shared.currentUser.avatarName)
-            loginImageView.wantsLayer = true
-            loginImageView.layer?.cornerRadius = 5
-            loginImageView.layer?.borderWidth = 1
-            loginImageView.layer?.borderColor = NSColor.secondaryLabelColor.cgColor
             // TODO: set avatar color
         } else {
             loginLabel.stringValue = "Login"

@@ -14,7 +14,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        guard AuthService.shared.isLoggedIn else { return }
+        
+        AuthService.shared.findUser(byEmail: AuthService.shared.userEmail) { result in
+            guard let isSuccess = try? result.get(), isSuccess else { return }
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Constants.Notification.Name.loggedInUserDidChange, object: nil)
+            }
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

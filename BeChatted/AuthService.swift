@@ -12,9 +12,31 @@ typealias AuthServiceCompletion = (Result<Bool, Error>) -> Void
 final class AuthService {
     static let shared = AuthService()
     
-    private(set) var authToken: String = ""
     private(set) var currentUser: CurrentUser = CurrentUser(name: "", email: "", avatarName: "")
-    private(set) var isLoggedIn: Bool = false
+    private(set) var authToken: String {
+        get {
+            UserDefaults.standard.string(forKey: "BCHAuthToken") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "BCHAuthToken")
+        }
+    }
+    private(set) var isLoggedIn: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: "BCHIsLoggedIn")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "BCHIsLoggedIn")
+        }
+    }
+    private(set) var userEmail: String {
+        get {
+            UserDefaults.standard.string(forKey: "BCHUserEmail") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "BCHUserEmail")
+        }
+    }
     
     private init() {}
     
@@ -191,6 +213,7 @@ final class AuthService {
                     email: findUserByEmailResponse.email,
                     avatarName: findUserByEmailResponse.avatarName)
                 self?.isLoggedIn = true
+                self?.userEmail = findUserByEmailResponse.email
                 completion(.success(true))
                 print(findUserByEmailResponse.name)
                 print(findUserByEmailResponse.email)
@@ -205,5 +228,6 @@ final class AuthService {
         authToken = ""
         currentUser = CurrentUser(name: "", email: "", avatarName: "")
         isLoggedIn = false
+        userEmail = ""
     }
 }

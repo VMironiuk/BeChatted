@@ -25,6 +25,14 @@ class ChatViewController: NSViewController {
         messageContainerView.layer?.borderWidth = 1
         messageContainerView.layer?.borderColor = NSColor(named: "ChannelColor")?.cgColor
         messageContainerView.layer?.cornerRadius = 5
+        
+        if AuthService.shared.isLoggedIn {
+            channelNameLabel.stringValue = "#general"
+            channelDescriptionLabel.stringValue = "Let's talk about general topics "
+        } else {
+            channelNameLabel.stringValue = ""
+            channelDescriptionLabel.stringValue = ""
+        }
     }
     
     override func viewWillAppear() {

@@ -225,9 +225,7 @@ final class AuthService {
     }
     
     func logoutUser() {
-        authToken = ""
         currentUser = CurrentUser(name: "", email: "", avatarName: "")
         isLoggedIn = false
-        userEmail = ""
     }
 }

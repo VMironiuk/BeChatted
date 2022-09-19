@@ -44,7 +44,16 @@ class ChatViewController: NSViewController {
     }
     
     @IBAction func sendMessageAction(_ sender: NSButton) {
-        print(#function)
+        guard AuthService.shared.isLoggedIn else {
+            let userInfo: [AnyHashable : Any] = [Constants.UserInfoKey.modalType : ModalType.login]
+            
+            NotificationCenter.default.post(
+                name: Constants.Notification.Name.showModal,
+                object: nil,
+                userInfo: userInfo)
+
+            return
+        }
     }
     
 }

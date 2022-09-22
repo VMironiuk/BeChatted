@@ -23,9 +23,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
+    
+    func applicationDidBecomeActive(_ notification: Notification) {
+        WebSocketService.shared.connect()
+    }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        WebSocketService.shared.disconnect()
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {

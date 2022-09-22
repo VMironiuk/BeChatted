@@ -21,6 +21,8 @@
 		2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */; };
 		2E8A6EE728CEFD3B00AE0B51 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */; };
 		2E8A6EE928CEFDCF00AE0B51 /* FindUserByEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */; };
+		2E8A96E328DC1D52001845D4 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 2E8A96E228DC1D52001845D4 /* SocketIO */; };
+		2E8A96E528DC1EF7001845D4 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A96E428DC1EF7001845D4 /* WebSocketService.swift */; };
 		2E8E52BF28C7138B00805941 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E52BE28C7138B00805941 /* LoginUser.swift */; };
 		2E8E52C128C7165000805941 /* AddUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E52C028C7165000805941 /* AddUser.swift */; };
 		2E9C5BFB28B4A27500F400E1 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C5BFA28B4A27500F400E1 /* CreateAccountViewController.swift */; };
@@ -71,6 +73,7 @@
 		2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserByEmail.swift; sourceTree = "<group>"; };
 		2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserByEmailResponse.swift; sourceTree = "<group>"; };
+		2E8A96E428DC1EF7001845D4 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
 		2E8E52BE28C7138B00805941 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		2E8E52C028C7165000805941 /* AddUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUser.swift; sourceTree = "<group>"; };
 		2E9C5BFA28B4A27500F400E1 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E8A96E328DC1D52001845D4 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +153,7 @@
 				2EA7AE7C28D43E9400B8BC0F /* ProfileViewController.swift */,
 				2EA7AE7E28D43EA800B8BC0F /* ProfileView.xib */,
 				2EA67D1628C1C5F100614269 /* AuthService.swift */,
+				2E8A96E428DC1EF7001845D4 /* WebSocketService.swift */,
 				2EA67D1828C1CA5800614269 /* Models */,
 				2E79829E28A6256300F10D91 /* Helpers */,
 			);
@@ -210,6 +215,9 @@
 			dependencies = (
 			);
 			name = BeChatted;
+			packageProductDependencies = (
+				2E8A96E228DC1D52001845D4 /* SocketIO */,
+			);
 			productName = BeChatted;
 			productReference = 2E161F6A2893895D0069D748 /* BeChatted.app */;
 			productType = "com.apple.product-type.application";
@@ -282,6 +290,9 @@
 				Base,
 			);
 			mainGroup = 2E161F612893895D0069D748;
+			packageReferences = (
+				2E8A96E128DC1D52001845D4 /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			productRefGroup = 2E161F6B2893895D0069D748 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -332,6 +343,7 @@
 				2ED59D5328938C97002D5493 /* ChannelsViewController.swift in Sources */,
 				2E8A6EE928CEFDCF00AE0B51 /* FindUserByEmailResponse.swift in Sources */,
 				2EA67D1A28C1CA6A00614269 /* RegisterAccount.swift in Sources */,
+				2E8A96E528DC1EF7001845D4 /* WebSocketService.swift in Sources */,
 				2ED59D5128938C42002D5493 /* ToolbarViewController.swift in Sources */,
 				2EA7AE7D28D43E9400B8BC0F /* ProfileViewController.swift in Sources */,
 				2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */,
@@ -671,6 +683,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E8A96E128DC1D52001845D4 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E8A96E228DC1D52001845D4 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E8A96E128DC1D52001845D4 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2E161F622893895D0069D748 /* Project object */;
 }

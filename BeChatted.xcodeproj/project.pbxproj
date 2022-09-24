@@ -18,6 +18,8 @@
 		2E69E54128C9B4CB00B44A4E /* LoginUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */; };
 		2E79829D28A624A600F10D91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79829C28A624A600F10D91 /* Constants.swift */; };
 		2E7982A028A6279F00F10D91 /* InteractionLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79829F28A6279F00F10D91 /* InteractionLockView.swift */; };
+		2E889E5F28DEF9A200B2BCB2 /* AddChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E889E5E28DEF9A200B2BCB2 /* AddChannelViewController.swift */; };
+		2E889E6128DEF9B300B2BCB2 /* AddChannelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E889E6028DEF9B300B2BCB2 /* AddChannelView.xib */; };
 		2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */; };
 		2E8A6EE728CEFD3B00AE0B51 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */; };
 		2E8A6EE928CEFDCF00AE0B51 /* FindUserByEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */; };
@@ -70,6 +72,8 @@
 		2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserResponse.swift; sourceTree = "<group>"; };
 		2E79829C28A624A600F10D91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2E79829F28A6279F00F10D91 /* InteractionLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionLockView.swift; sourceTree = "<group>"; };
+		2E889E5E28DEF9A200B2BCB2 /* AddChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewController.swift; sourceTree = "<group>"; };
+		2E889E6028DEF9B300B2BCB2 /* AddChannelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelView.xib; sourceTree = "<group>"; };
 		2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserByEmail.swift; sourceTree = "<group>"; };
 		2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserByEmailResponse.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				2E9C5BFC28B4A28D00F400E1 /* CreateAccountView.xib */,
 				2EA7AE7C28D43E9400B8BC0F /* ProfileViewController.swift */,
 				2EA7AE7E28D43EA800B8BC0F /* ProfileView.xib */,
+				2E889E5E28DEF9A200B2BCB2 /* AddChannelViewController.swift */,
+				2E889E6028DEF9B300B2BCB2 /* AddChannelView.xib */,
 				2EA67D1628C1C5F100614269 /* AuthService.swift */,
 				2E8A96E428DC1EF7001845D4 /* WebSocketService.swift */,
 				2EA67D1828C1CA5800614269 /* Models */,
@@ -313,6 +319,7 @@
 				2EA7AE7F28D43EA800B8BC0F /* ProfileView.xib in Resources */,
 				2E161F75289389600069D748 /* Main.storyboard in Resources */,
 				2E9C5BFD28B4A28D00F400E1 /* CreateAccountView.xib in Resources */,
+				2E889E6128DEF9B300B2BCB2 /* AddChannelView.xib in Resources */,
 				2E67DDEC28AB4D3D009775FC /* LoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +355,7 @@
 				2EA7AE7D28D43E9400B8BC0F /* ProfileViewController.swift in Sources */,
 				2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */,
 				2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */,
+				2E889E5F28DEF9A200B2BCB2 /* AddChannelViewController.swift in Sources */,
 				2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */,
 				2E8E52BF28C7138B00805941 /* LoginUser.swift in Sources */,
 				2E161F6E2893895D0069D748 /* AppDelegate.swift in Sources */,

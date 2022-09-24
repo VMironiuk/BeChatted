@@ -14,6 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        defer { WebSocketService.shared.connect() }
+        
         guard AuthService.shared.isLoggedIn else { return }
         
         AuthService.shared.findUser(byEmail: AuthService.shared.userEmail) { result in
@@ -24,10 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func applicationDidBecomeActive(_ notification: Notification) {
-        WebSocketService.shared.connect()
-    }
-
     func applicationWillTerminate(_ aNotification: Notification) {
         WebSocketService.shared.disconnect()
     }

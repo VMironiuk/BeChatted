@@ -12,11 +12,12 @@ class WebSocketService: NSObject {
 
     static let shared = WebSocketService()
     
+    private let socketManager: SocketManager
     private let socket: SocketIOClient
     
     private override init() {
         let url = URL(string: Constants.URL.baseURL)!
-        let socketManager = SocketManager(socketURL: url, config: [.log(true), .compress])
+        socketManager = SocketManager(socketURL: url, config: [.log(true), .compress, .forceWebsockets(true)])
         socket = socketManager.defaultSocket
         
         super.init()
@@ -28,5 +29,9 @@ class WebSocketService: NSObject {
     
     func disconnect() {
         socket.disconnect()
+    }
+    
+    func addChannel(with channelName: String, channelDescription: String) {
+        socket.emit("newChannel", channelName, channelDescription)
     }
 }

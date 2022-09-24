@@ -35,16 +35,17 @@ class ChannelsViewController: NSViewController {
     }
     
     @IBAction func addChannelAction(_ sender: NSButton) {
-        guard AuthService.shared.isLoggedIn else {
-            let userInfo: [AnyHashable : Any] = [Constants.UserInfoKey.modalType : ModalType.login]
-            
-            NotificationCenter.default.post(
-                name: Constants.Notification.Name.showModal,
-                object: nil,
-                userInfo: userInfo)
-
-            return
+        var userInfo: [AnyHashable : Any] = [:]
+        
+        if AuthService.shared.isLoggedIn {
+            userInfo = [Constants.UserInfoKey.modalType : ModalType.addChannel]
+        } else {
+            userInfo = [Constants.UserInfoKey.modalType : ModalType.login]
         }
+        
+        NotificationCenter.default.post(
+            name: Constants.Notification.Name.showModal,
+            object: nil,
+            userInfo: userInfo)
     }
-    
 }

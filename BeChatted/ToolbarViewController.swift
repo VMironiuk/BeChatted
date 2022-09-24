@@ -11,6 +11,7 @@ enum ModalType {
     case login
     case createAccount
     case profile
+    case addChannel
 }
 
 class ToolbarViewController: NSViewController {
@@ -89,6 +90,8 @@ class ToolbarViewController: NSViewController {
             viewController = CreateAccountViewController(nibName: nil, bundle: nil)
         case .profile:
             viewController = ProfileViewController(nibName: nil, bundle: nil)
+        case .addChannel:
+            viewController = AddChannelViewController(nibName: nil, bundle: nil)
         }
         
         let childView = viewController.view

@@ -199,6 +199,9 @@
                                                 <font key="font" metaFont="systemBold" size="15"/>
                                             </buttonCell>
                                             <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <action selector="chooseAvatarButtonAction:" target="-2" id="Xqw-A4-K2x"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <visibilityPriorities>

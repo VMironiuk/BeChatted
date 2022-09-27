@@ -18,6 +18,10 @@
 		2E69E54128C9B4CB00B44A4E /* LoginUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */; };
 		2E79829D28A624A600F10D91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79829C28A624A600F10D91 /* Constants.swift */; };
 		2E7982A028A6279F00F10D91 /* InteractionLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79829F28A6279F00F10D91 /* InteractionLockView.swift */; };
+		2E8262E528E2C67A00B77838 /* ChooseAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8262E428E2C67A00B77838 /* ChooseAvatarViewController.swift */; };
+		2E8262E728E2C68800B77838 /* ChooseAvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E8262E628E2C68800B77838 /* ChooseAvatarView.xib */; };
+		2E8262EA28E2C92500B77838 /* AvatarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8262E828E2C92500B77838 /* AvatarItem.swift */; };
+		2E8262EB28E2C92500B77838 /* AvatarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E8262E928E2C92500B77838 /* AvatarItem.xib */; };
 		2E889E5F28DEF9A200B2BCB2 /* AddChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E889E5E28DEF9A200B2BCB2 /* AddChannelViewController.swift */; };
 		2E889E6128DEF9B300B2BCB2 /* AddChannelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E889E6028DEF9B300B2BCB2 /* AddChannelView.xib */; };
 		2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */; };
@@ -72,6 +76,10 @@
 		2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserResponse.swift; sourceTree = "<group>"; };
 		2E79829C28A624A600F10D91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2E79829F28A6279F00F10D91 /* InteractionLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionLockView.swift; sourceTree = "<group>"; };
+		2E8262E428E2C67A00B77838 /* ChooseAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAvatarViewController.swift; sourceTree = "<group>"; };
+		2E8262E628E2C68800B77838 /* ChooseAvatarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseAvatarView.xib; sourceTree = "<group>"; };
+		2E8262E828E2C92500B77838 /* AvatarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarItem.swift; sourceTree = "<group>"; };
+		2E8262E928E2C92500B77838 /* AvatarItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarItem.xib; sourceTree = "<group>"; };
 		2E889E5E28DEF9A200B2BCB2 /* AddChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewController.swift; sourceTree = "<group>"; };
 		2E889E6028DEF9B300B2BCB2 /* AddChannelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelView.xib; sourceTree = "<group>"; };
 		2E8A6EE228CEFA5200AE0B51 /* FindUserByEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserByEmail.swift; sourceTree = "<group>"; };
@@ -158,6 +166,10 @@
 				2EA7AE7E28D43EA800B8BC0F /* ProfileView.xib */,
 				2E889E5E28DEF9A200B2BCB2 /* AddChannelViewController.swift */,
 				2E889E6028DEF9B300B2BCB2 /* AddChannelView.xib */,
+				2E8262E428E2C67A00B77838 /* ChooseAvatarViewController.swift */,
+				2E8262E628E2C68800B77838 /* ChooseAvatarView.xib */,
+				2E8262E828E2C92500B77838 /* AvatarItem.swift */,
+				2E8262E928E2C92500B77838 /* AvatarItem.xib */,
 				2EA67D1628C1C5F100614269 /* AuthService.swift */,
 				2E8A96E428DC1EF7001845D4 /* WebSocketService.swift */,
 				2EA67D1828C1CA5800614269 /* Models */,
@@ -320,7 +332,9 @@
 				2E161F75289389600069D748 /* Main.storyboard in Resources */,
 				2E9C5BFD28B4A28D00F400E1 /* CreateAccountView.xib in Resources */,
 				2E889E6128DEF9B300B2BCB2 /* AddChannelView.xib in Resources */,
+				2E8262EB28E2C92500B77838 /* AvatarItem.xib in Resources */,
 				2E67DDEC28AB4D3D009775FC /* LoginView.xib in Resources */,
+				2E8262E728E2C68800B77838 /* ChooseAvatarView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,12 +366,14 @@
 				2EA67D1A28C1CA6A00614269 /* RegisterAccount.swift in Sources */,
 				2E8A96E528DC1EF7001845D4 /* WebSocketService.swift in Sources */,
 				2ED59D5128938C42002D5493 /* ToolbarViewController.swift in Sources */,
+				2E8262EA28E2C92500B77838 /* AvatarItem.swift in Sources */,
 				2EA7AE7D28D43E9400B8BC0F /* ProfileViewController.swift in Sources */,
 				2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */,
 				2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */,
 				2E889E5F28DEF9A200B2BCB2 /* AddChannelViewController.swift in Sources */,
 				2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */,
 				2E8E52BF28C7138B00805941 /* LoginUser.swift in Sources */,
+				2E8262E528E2C67A00B77838 /* ChooseAvatarViewController.swift in Sources */,
 				2E161F6E2893895D0069D748 /* AppDelegate.swift in Sources */,
 				2E9C5BFB28B4A27500F400E1 /* CreateAccountViewController.swift in Sources */,
 				2EA67D1728C1C5F100614269 /* AuthService.swift in Sources */,

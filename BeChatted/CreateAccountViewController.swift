@@ -16,6 +16,8 @@ class CreateAccountViewController: NSViewController {
     @IBOutlet private weak var chooseAvatarButton: NSButton!
     @IBOutlet private weak var profileAvatarImageView: NSImageView!
     
+    private let chooseAvatarPopover: NSPopover = NSPopover()
+    
     override var nibName: NSNib.Name? {
         "CreateAccountView"
     }
@@ -61,6 +63,10 @@ class CreateAccountViewController: NSViewController {
         profileAvatarImageView.layer?.borderColor = NSColor.gray.cgColor
         profileAvatarImageView.layer?.borderWidth = 3
         profileAvatarImageView.layer?.cornerRadius = 10
+        
+        // Choose avatar popover
+        chooseAvatarPopover.contentViewController = ChooseAvatarViewController(nibName: nil, bundle: nil)
+        chooseAvatarPopover.behavior = .transient
     }
 
     @IBAction func closeButtonAction(_ sender: NSButton) {
@@ -69,6 +75,15 @@ class CreateAccountViewController: NSViewController {
     
     @IBAction func createAccountButtonAction(_ sender: NSButton) {
         registerAccount()
+    }
+    
+    @IBAction func chooseAvatarButtonAction(_ sender: NSButton) {
+        chooseAvatarPopover.show(
+            relativeTo: chooseAvatarButton.bounds,
+            of: chooseAvatarButton,
+            preferredEdge: .maxX
+        )
+        
     }
     
     private func registerAccount() {

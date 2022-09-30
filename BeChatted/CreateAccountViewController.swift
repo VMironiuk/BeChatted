@@ -16,6 +16,7 @@ class CreateAccountViewController: NSViewController {
     @IBOutlet private weak var chooseAvatarButton: NSButton!
     @IBOutlet private weak var profileAvatarImageView: NSImageView!
     
+    private var avatarName: String = "profileDefault"
     private let chooseAvatarPopover: NSPopover = NSPopover()
     
     override var nibName: NSNib.Name? {
@@ -65,7 +66,9 @@ class CreateAccountViewController: NSViewController {
         profileAvatarImageView.layer?.cornerRadius = 10
         
         // Choose avatar popover
-        chooseAvatarPopover.contentViewController = ChooseAvatarViewController(nibName: nil, bundle: nil)
+        let chooseAvatarViewController = ChooseAvatarViewController(nibName: nil, bundle: nil)
+        chooseAvatarViewController.delegate = self
+        chooseAvatarPopover.contentViewController = chooseAvatarViewController
         chooseAvatarPopover.behavior = .transient
     }
 
@@ -114,7 +117,7 @@ class CreateAccountViewController: NSViewController {
         AuthService.shared.addUser(
             withName: nameTextField.stringValue,
             email: emailTextField.stringValue,
-            avatarName: "dark5",
+            avatarName: avatarName,
             avatarColor: "avatarColor"
         ) { result in
             guard let isSuccess = try? result.get(), isSuccess else { return }
@@ -122,5 +125,15 @@ class CreateAccountViewController: NSViewController {
                 NotificationCenter.default.post(name: Constants.Notification.Name.closeModal, object: nil)
             }
         }
+    }
+}
+
+extension CreateAccountViewController: ChooseAvatarViewControllerDelegate {
+    func chooseAvatarViewController(
+        _ viewController: ChooseAvatarViewController,
+        didSelectItemWithAvatarName avatarName: String
+    ) {
+        profileAvatarImageView.image = NSImage(named: avatarName)
+        self.avatarName = avatarName
     }
 }

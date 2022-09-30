@@ -43,8 +43,7 @@ class ProfileViewController: NSViewController {
         emailLabel.stringValue = AuthService.shared.currentUser.email
         
         // Profile Image
-        // TODO: set user's avatar
-        profileAvatarImageView.image = NSImage(named: "profileDefault")
+        profileAvatarImageView.image = NSImage(named: AuthService.shared.currentUser.avatarName)
         profileAvatarImageView.wantsLayer = true
         profileAvatarImageView.layer?.borderColor = NSColor.gray.cgColor
         profileAvatarImageView.layer?.borderWidth = 3

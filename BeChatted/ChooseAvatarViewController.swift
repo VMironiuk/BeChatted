@@ -7,9 +7,25 @@
 
 import Cocoa
 
+enum AvatarType: Int {
+    case light
+    case dark
+}
+
+protocol ChooseAvatarViewControllerDelegate: AnyObject {
+    func chooseAvatarViewController(
+        _ viewController: ChooseAvatarViewController,
+        didSelectItemWithAvatarName avatarName: String)
+}
+
 class ChooseAvatarViewController: NSViewController {
 
     @IBOutlet private weak var collectionView: NSCollectionView!
+    @IBOutlet private weak var segmentedControl: NSSegmentedControl!
+    
+    private var avatarType: AvatarType {
+        AvatarType(rawValue: segmentedControl.indexOfSelectedItem)!
+    }
     
     private let avatarItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "AvatarItem")
     
@@ -17,6 +33,8 @@ class ChooseAvatarViewController: NSViewController {
         "ChooseAvatarView"
     }
     
+    weak var delegate: ChooseAvatarViewControllerDelegate?
+        
     override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "ChooseAvatarView", bundle: nil)
     }
@@ -33,6 +51,9 @@ class ChooseAvatarViewController: NSViewController {
         collectionView.delegate = self
     }
     
+    @IBAction func segmentedControlAction(_ sender: NSSegmentedControl) {
+        collectionView.reloadData()
+    }
 }
 
 extension ChooseAvatarViewController: NSCollectionViewDataSource {
@@ -45,7 +66,11 @@ extension ChooseAvatarViewController: NSCollectionViewDataSource {
         itemForRepresentedObjectAt indexPath: IndexPath
     ) -> NSCollectionViewItem {
         let avatarItem = collectionView.makeItem(withIdentifier: avatarItemIdentifier, for: indexPath) as! AvatarItem
-        avatarItem.update(image: NSImage(named: "dark0"))
+        if avatarType == .light {
+            avatarItem.update(image: NSImage(named: "light\(indexPath.item)"))
+        } else {
+            avatarItem.update(image: NSImage(named: "dark\(indexPath.item)"))
+        }
         return avatarItem
     }
     
@@ -58,5 +83,17 @@ extension ChooseAvatarViewController: NSCollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> NSSize {
         NSSize(width: 85, height: 85)
+    }
+}
+
+extension ChooseAvatarViewController: NSCollectionViewDelegate {
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        guard let indexPath = indexPaths.first else { return }
+        if avatarType == .light {
+            delegate?.chooseAvatarViewController(self, didSelectItemWithAvatarName: "light\(indexPath.item)")
+        } else {
+            delegate?.chooseAvatarViewController(self, didSelectItemWithAvatarName: "dark\(indexPath.item)")
+        }
+        view.window?.cancelOperation(nil)
     }
 }

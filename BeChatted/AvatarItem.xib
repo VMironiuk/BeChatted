@@ -19,15 +19,15 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mZ4-Pd-FtN">
-                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    <rect key="frame" x="8" y="8" width="84" height="84"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="PT4-8N-EfV"/>
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="mZ4-Pd-FtN" secondAttribute="trailing" id="8YO-Sv-ddq"/>
-                <constraint firstAttribute="bottom" secondItem="mZ4-Pd-FtN" secondAttribute="bottom" id="AhO-84-noc"/>
-                <constraint firstItem="mZ4-Pd-FtN" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="uiu-8u-IUa"/>
-                <constraint firstItem="mZ4-Pd-FtN" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="wgT-Aj-aaR"/>
+                <constraint firstAttribute="trailing" secondItem="mZ4-Pd-FtN" secondAttribute="trailing" constant="8" id="8YO-Sv-ddq"/>
+                <constraint firstAttribute="bottom" secondItem="mZ4-Pd-FtN" secondAttribute="bottom" constant="8" id="AhO-84-noc"/>
+                <constraint firstItem="mZ4-Pd-FtN" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="uiu-8u-IUa"/>
+                <constraint firstItem="mZ4-Pd-FtN" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="wgT-Aj-aaR"/>
             </constraints>
             <point key="canvasLocation" x="139" y="154"/>
         </customView>

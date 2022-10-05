@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E11D8AB28ED4D6E003CC71B /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E11D8AA28ED4D6E003CC71B /* Channel.swift */; };
+		2E11D8AD28ED4E72003CC71B /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E11D8AC28ED4E72003CC71B /* MessageService.swift */; };
 		2E161F6E2893895D0069D748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E161F6D2893895D0069D748 /* AppDelegate.swift */; };
 		2E161F72289389600069D748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E161F71289389600069D748 /* Assets.xcassets */; };
 		2E161F75289389600069D748 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E161F73289389600069D748 /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E11D8AA28ED4D6E003CC71B /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		2E11D8AC28ED4E72003CC71B /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		2E161F6A2893895D0069D748 /* BeChatted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeChatted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E161F6D2893895D0069D748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E161F71289389600069D748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,6 +130,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E11D8A928ED4925003CC71B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2EA67D1628C1C5F100614269 /* AuthService.swift */,
+				2E8A96E428DC1EF7001845D4 /* WebSocketService.swift */,
+				2E11D8AC28ED4E72003CC71B /* MessageService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		2E161F612893895D0069D748 = {
 			isa = PBXGroup;
 			children = (
@@ -170,8 +184,7 @@
 				2E8262E628E2C68800B77838 /* ChooseAvatarView.xib */,
 				2E8262E828E2C92500B77838 /* AvatarItem.swift */,
 				2E8262E928E2C92500B77838 /* AvatarItem.xib */,
-				2EA67D1628C1C5F100614269 /* AuthService.swift */,
-				2E8A96E428DC1EF7001845D4 /* WebSocketService.swift */,
+				2E11D8A928ED4925003CC71B /* Services */,
 				2EA67D1828C1CA5800614269 /* Models */,
 				2E79829E28A6256300F10D91 /* Helpers */,
 			);
@@ -213,6 +226,7 @@
 				2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */,
 				2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */,
 				2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */,
+				2E11D8AA28ED4D6E003CC71B /* Channel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -372,12 +386,14 @@
 				2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */,
 				2E889E5F28DEF9A200B2BCB2 /* AddChannelViewController.swift in Sources */,
 				2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */,
+				2E11D8AD28ED4E72003CC71B /* MessageService.swift in Sources */,
 				2E8E52BF28C7138B00805941 /* LoginUser.swift in Sources */,
 				2E8262E528E2C67A00B77838 /* ChooseAvatarViewController.swift in Sources */,
 				2E161F6E2893895D0069D748 /* AppDelegate.swift in Sources */,
 				2E9C5BFB28B4A27500F400E1 /* CreateAccountViewController.swift in Sources */,
 				2EA67D1728C1C5F100614269 /* AuthService.swift in Sources */,
 				2ED59D5728938D7F002D5493 /* MainWindowController.swift in Sources */,
+				2E11D8AB28ED4D6E003CC71B /* Channel.swift in Sources */,
 				2E8E52C128C7165000805941 /* AddUser.swift in Sources */,
 				2E8A6EE728CEFD3B00AE0B51 /* CurrentUser.swift in Sources */,
 				2E79829D28A624A600F10D91 /* Constants.swift in Sources */,

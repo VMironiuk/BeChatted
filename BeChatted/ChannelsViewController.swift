@@ -18,6 +18,8 @@ class ChannelsViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor(named: "ChannelsColor")?.cgColor
         userNameLabel.stringValue = ""
+        tableView.delegate = self
+        tableView.dataSource = self
         
         NotificationCenter.default.addObserver(
             self,
@@ -29,6 +31,13 @@ class ChannelsViewController: NSViewController {
     @objc private func onLoggedInUserDidChange(_ notification: Notification) {
         if AuthService.shared.isLoggedIn {
             userNameLabel.stringValue = AuthService.shared.currentUser.name
+            
+            MessageService.shared.loadChannels { [weak self] result in
+                guard let isSuccess = try? result.get(), isSuccess else { return }
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
         } else {
             userNameLabel.stringValue = ""
         }
@@ -47,5 +56,20 @@ class ChannelsViewController: NSViewController {
             name: Constants.Notification.Name.showModal,
             object: nil,
             userInfo: userInfo)
+    }
+}
+
+extension ChannelsViewController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        MessageService.shared.channels.count
+    }
+}
+
+extension ChannelsViewController: NSTableViewDelegate {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let id = NSUserInterfaceItemIdentifier(rawValue: "ChannelCell")
+        let cellView = tableView.makeView(withIdentifier: id, owner: nil) as? ChannelCellView
+        cellView?.configure(with: MessageService.shared.channels[row])
+        return cellView
     }
 }

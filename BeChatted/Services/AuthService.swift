@@ -207,10 +207,7 @@ final class AuthService {
                     completion(.success(false))
                     return
                 }
-                
-                // NOTE: just for testing purpose
-                MessageService.shared.loadChannels { _ in }
-                
+                                
                 self?.currentUser = CurrentUser(
                     name: findUserByEmailResponse.name,
                     email: findUserByEmailResponse.email,

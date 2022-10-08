@@ -13,6 +13,8 @@ class ChannelsViewController: NSViewController {
     @IBOutlet private weak var channelsLabel: NSTextField!
     @IBOutlet private weak var tableView: NSTableView!
     
+    private var selectedRow: Int = .zero
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
@@ -69,7 +71,13 @@ extension ChannelsViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let id = NSUserInterfaceItemIdentifier(rawValue: "ChannelCell")
         let cellView = tableView.makeView(withIdentifier: id, owner: nil) as? ChannelCellView
-        cellView?.configure(with: MessageService.shared.channels[row])
+        let isSelected = selectedRow == row
+        cellView?.configure(with: MessageService.shared.channels[row], isSelected: isSelected)
         return cellView
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        selectedRow = tableView.selectedRow
+        tableView.reloadData()
     }
 }

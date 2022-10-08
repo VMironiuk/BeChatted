@@ -848,17 +848,17 @@
                             </customView>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="10" verticalLineScroll="30" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luN-NX-Yzv">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="224"/>
-                                <clipView key="contentView" drawsBackground="NO" id="V8y-Zp-pSV">
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="V8y-Zp-pSV">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="224"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="TIS-ae-BQf">
+                                        <tableView focusRingType="none" verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="fullWidth" selectionHighlightStyle="none" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="TIS-ae-BQf">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="224"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" name="ChannelsColor"/>
                                             <color key="gridColor" name="ChannelsColor"/>
                                             <tableColumns>
-                                                <tableColumn editable="NO" width="168" minWidth="40" maxWidth="1000" id="cUf-vC-cjN">
+                                                <tableColumn editable="NO" width="188" minWidth="40" maxWidth="1000" id="cUf-vC-cjN">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -871,11 +871,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="ChannelCell" id="ExQ-A6-AAc" customClass="ChannelCellView" customModule="BeChatted" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="0.0" width="180" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="k2T-Ba-SPw">
-                                                                    <rect key="frame" x="-2" y="7" width="184" height="16"/>
+                                                                    <rect key="frame" x="2" y="7" width="196" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="PWR-Qc-x6J">
                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -884,8 +884,8 @@
                                                                 </textField>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="k2T-Ba-SPw" secondAttribute="trailing" id="16I-xx-JP7"/>
-                                                                <constraint firstItem="k2T-Ba-SPw" firstAttribute="leading" secondItem="ExQ-A6-AAc" secondAttribute="leading" id="AUd-QJ-bCr"/>
+                                                                <constraint firstAttribute="trailing" secondItem="k2T-Ba-SPw" secondAttribute="trailing" constant="4" id="16I-xx-JP7"/>
+                                                                <constraint firstItem="k2T-Ba-SPw" firstAttribute="leading" secondItem="ExQ-A6-AAc" secondAttribute="leading" constant="4" id="AUd-QJ-bCr"/>
                                                                 <constraint firstItem="k2T-Ba-SPw" firstAttribute="centerY" secondItem="ExQ-A6-AAc" secondAttribute="centerY" id="ZgG-3d-9YJ"/>
                                                             </constraints>
                                                             <connections>

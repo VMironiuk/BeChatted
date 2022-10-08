@@ -15,7 +15,14 @@ class ChannelCellView: NSTableCellView {
         super.draw(dirtyRect)
     }
     
-    func configure(with channel: Channel) {
+    func configure(with channel: Channel, isSelected: Bool) {
         channelNameTextField.stringValue = "#\(channel.name)"
+        
+        wantsLayer = true
+        if isSelected {
+            layer?.backgroundColor = NSColor(named: "ToolbarColor")?.cgColor
+        } else {
+            layer?.backgroundColor = .clear
+        }
     }
 }

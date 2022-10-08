@@ -30,6 +30,16 @@ class ChannelsViewController: NSViewController {
             object: nil)
     }
     
+    private func sendFirstChannelIfNeeded() {
+        guard let channel = MessageService.shared.channels.first else { return }
+        
+        let userInfo = [Constants.UserInfoKey.channel: channel]
+        NotificationCenter.default.post(
+            name: Constants.Notification.Name.channelDidChange,
+            object: nil,
+            userInfo: userInfo)
+    }
+    
     @objc private func onLoggedInUserDidChange(_ notification: Notification) {
         if AuthService.shared.isLoggedIn {
             userNameLabel.stringValue = AuthService.shared.currentUser.name
@@ -38,6 +48,7 @@ class ChannelsViewController: NSViewController {
                 guard let isSuccess = try? result.get(), isSuccess else { return }
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
+                    self?.sendFirstChannelIfNeeded()
                 }
             }
         } else {
@@ -79,5 +90,12 @@ extension ChannelsViewController: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         selectedRow = tableView.selectedRow
         tableView.reloadData()
+        
+        let channel = MessageService.shared.channels[selectedRow]
+        let userInfo = [Constants.UserInfoKey.channel: channel]
+        NotificationCenter.default.post(
+            name: Constants.Notification.Name.channelDidChange,
+            object: nil,
+            userInfo: userInfo)
     }
 }

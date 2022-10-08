@@ -25,6 +25,15 @@ class ChatViewController: NSViewController {
         messageContainerView.layer?.borderWidth = 1
         messageContainerView.layer?.borderColor = NSColor(named: "ChannelColor")?.cgColor
         messageContainerView.layer?.cornerRadius = 5
+        
+        channelNameLabel.stringValue = ""
+        channelDescriptionLabel.stringValue = ""
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onChannelDidChange(_:)),
+            name: Constants.Notification.Name.channelDidChange,
+            object: nil)
     }
     
     override func viewWillAppear() {
@@ -33,6 +42,12 @@ class ChatViewController: NSViewController {
         if let window = messageTextField.window, let fieldEditor = window.fieldEditor(true, for: messageTextField) as? NSTextView {
             fieldEditor.insertionPointColor = .unemphasizedSelectedTextBackgroundColor
         }
+    }
+    
+    @objc private func onChannelDidChange(_ notification: Notification) {
+        guard let channel = notification.userInfo?[Constants.UserInfoKey.channel] as? Channel else { return }
+        channelNameLabel.stringValue = channel.name
+        channelDescriptionLabel.stringValue = channel.description
     }
     
     @IBAction func sendMessageAction(_ sender: NSButton) {

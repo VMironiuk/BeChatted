@@ -19,6 +19,7 @@ struct Constants {
             static let showModal = NSNotification.Name("BCHShowModalNotificationName")
             static let closeModal = NSNotification.Name("BCHCloseModalNotificationName")
             static let loggedInUserDidChange = NSNotification.Name("BCHLoggedInUserDidChangeNotificationName")
+            static let channelDidChange = NSNotification.Name("BCHChannelDidChangeNotificationName")
         }
     }
     
@@ -26,6 +27,7 @@ struct Constants {
         private init() {}
         
         static let modalType = "ModalType"
+        static let channel = "Channel"
     }
     
     struct URL {

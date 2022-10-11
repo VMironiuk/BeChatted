@@ -44,5 +44,7 @@ struct Constants {
         static let addUser = "/v1/user/add"
         static let findUserByEmail = "/v1/user/byEmail/"
         static let findAllChannels = "/v1/channel"
+        static let findMessagesByChannel = "/v1/message/byChannel/"
+        static let addMessage = "/v1/message/add"
     }
 }

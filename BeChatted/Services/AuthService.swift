@@ -12,7 +12,7 @@ typealias AuthServiceCompletion = (Result<Bool, Error>) -> Void
 final class AuthService {
     static let shared = AuthService()
     
-    private(set) var currentUser: CurrentUser = CurrentUser(name: "", email: "", avatarName: "")
+    private(set) var currentUser: CurrentUser = CurrentUser(id: "", name: "", email: "", avatarName: "")
     private(set) var authToken: String {
         get {
             UserDefaults.standard.string(forKey: "BCHAuthToken") ?? ""
@@ -209,6 +209,7 @@ final class AuthService {
                 }
                                 
                 self?.currentUser = CurrentUser(
+                    id: findUserByEmailResponse.id,
                     name: findUserByEmailResponse.name,
                     email: findUserByEmailResponse.email,
                     avatarName: findUserByEmailResponse.avatarName)
@@ -225,7 +226,7 @@ final class AuthService {
     }
     
     func logoutUser() {
-        currentUser = CurrentUser(name: "", email: "", avatarName: "")
+        currentUser = CurrentUser(id: "", name: "", email: "", avatarName: "")
         isLoggedIn = false
     }
 }

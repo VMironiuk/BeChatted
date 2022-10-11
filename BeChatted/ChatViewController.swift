@@ -16,6 +16,8 @@ class ChatViewController: NSViewController {
     @IBOutlet private weak var messageContainerView: NSView!
     @IBOutlet private weak var tableView: NSTableView!
     
+    private var channel: Channel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
@@ -46,8 +48,15 @@ class ChatViewController: NSViewController {
     
     @objc private func onChannelDidChange(_ notification: Notification) {
         guard let channel = notification.userInfo?[Constants.UserInfoKey.channel] as? Channel else { return }
+        self.channel = channel
         channelNameLabel.stringValue = channel.name
         channelDescriptionLabel.stringValue = channel.description
+        
+        MessageService.shared.loadMessages(by: channel.id) { result in
+            guard let isSuccess = try? result.get(), isSuccess else { return }
+            MessageService.shared.messages.forEach { print($0.messageBody) }
+            print("Messages: \(MessageService.shared.messages)")
+        }
     }
     
     @IBAction func sendMessageAction(_ sender: NSButton) {
@@ -61,6 +70,24 @@ class ChatViewController: NSViewController {
 
             return
         }
+
+        let message = AddMessage(
+            messageBody: messageTextField.stringValue,
+            userId: AuthService.shared.currentUser.id,
+            channelId: channel?.id ?? "",
+            userName: AuthService.shared.currentUser.name,
+            userAvatar: AuthService.shared.currentUser.avatarName,
+            userAvatarColor: "avatarColor")
+        
+        MessageService.shared.sendMessage(message) { result in
+            switch result {
+            case .success:
+                print("Message sent successfully")
+            case .failure:
+                print("Message send failed")
+            }
+        }
+        
+        messageTextField.stringValue = ""
     }
-    
 }

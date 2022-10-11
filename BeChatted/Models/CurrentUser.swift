@@ -8,6 +8,7 @@
 import Foundation
 
 struct CurrentUser {
+    let id: String
     let name: String
     let email: String
     let avatarName: String

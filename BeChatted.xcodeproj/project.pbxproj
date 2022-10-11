@@ -15,6 +15,8 @@
 		2E161F80289389600069D748 /* BeChattedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E161F7F289389600069D748 /* BeChattedTests.swift */; };
 		2E161F8A289389600069D748 /* BeChattedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E161F89289389600069D748 /* BeChattedUITests.swift */; };
 		2E161F8C289389600069D748 /* BeChattedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E161F8B289389600069D748 /* BeChattedUITestsLaunchTests.swift */; };
+		2E5E1BBB28F53328001BD8D1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5E1BBA28F53328001BD8D1 /* Message.swift */; };
+		2E5E1BBD28F53A5A001BD8D1 /* AddMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5E1BBC28F53A5A001BD8D1 /* AddMessage.swift */; };
 		2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E67DDE928AB4D19009775FC /* LoginViewController.swift */; };
 		2E67DDEC28AB4D3D009775FC /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E67DDEB28AB4D3D009775FC /* LoginView.xib */; };
 		2E69E54128C9B4CB00B44A4E /* LoginUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */; };
@@ -76,6 +78,8 @@
 		2E161F85289389600069D748 /* BeChattedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeChattedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E161F89289389600069D748 /* BeChattedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeChattedUITests.swift; sourceTree = "<group>"; };
 		2E161F8B289389600069D748 /* BeChattedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeChattedUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2E5E1BBA28F53328001BD8D1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2E5E1BBC28F53A5A001BD8D1 /* AddMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessage.swift; sourceTree = "<group>"; };
 		2E67DDE928AB4D19009775FC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2E67DDEB28AB4D3D009775FC /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		2E69E54028C9B4CB00B44A4E /* LoginUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserResponse.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 				2E8A6EE828CEFDCF00AE0B51 /* FindUserByEmailResponse.swift */,
 				2E8A6EE628CEFD3B00AE0B51 /* CurrentUser.swift */,
 				2E11D8AA28ED4D6E003CC71B /* Channel.swift */,
+				2E5E1BBA28F53328001BD8D1 /* Message.swift */,
+				2E5E1BBC28F53A5A001BD8D1 /* AddMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -384,7 +390,9 @@
 				2E8A96E528DC1EF7001845D4 /* WebSocketService.swift in Sources */,
 				2ED59D5128938C42002D5493 /* ToolbarViewController.swift in Sources */,
 				2E8262EA28E2C92500B77838 /* AvatarItem.swift in Sources */,
+				2E5E1BBD28F53A5A001BD8D1 /* AddMessage.swift in Sources */,
 				2EA7AE7D28D43E9400B8BC0F /* ProfileViewController.swift in Sources */,
+				2E5E1BBB28F53328001BD8D1 /* Message.swift in Sources */,
 				2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */,
 				2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */,
 				2E889E5F28DEF9A200B2BCB2 /* AddChannelViewController.swift in Sources */,

@@ -17,11 +17,16 @@ class ChatViewController: NSViewController {
     @IBOutlet private weak var tableView: NSTableView!
     
     private var channel: Channel?
+    private var messages: [Message] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor(named: "ChatColor")?.cgColor
+        
+        tableView.dataSource = self
+        tableView.delegate = self
         
         messageContainerView.wantsLayer = true
         messageContainerView.layer?.borderWidth = 1
@@ -51,11 +56,14 @@ class ChatViewController: NSViewController {
         self.channel = channel
         channelNameLabel.stringValue = channel.name
         channelDescriptionLabel.stringValue = channel.description
+        messages.removeAll()
         
-        MessageService.shared.loadMessages(by: channel.id) { result in
+        MessageService.shared.loadMessages(by: channel.id) { [weak self] result in
             guard let isSuccess = try? result.get(), isSuccess else { return }
-            MessageService.shared.messages.forEach { print($0.messageBody) }
-            print("Messages: \(MessageService.shared.messages)")
+            self?.messages = MessageService.shared.messages
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
     }
     
@@ -89,5 +97,21 @@ class ChatViewController: NSViewController {
         }
         
         messageTextField.stringValue = ""
+    }
+}
+
+extension ChatViewController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        messages.count
+    }
+}
+
+extension ChatViewController: NSTableViewDelegate {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let id = NSUserInterfaceItemIdentifier(rawValue: "MessageCell")
+        let cell = tableView.makeView(withIdentifier: id, owner: nil) as? MessageCell
+        let message = messages[row]
+        cell?.configure(with: message)
+        return cell
     }
 }

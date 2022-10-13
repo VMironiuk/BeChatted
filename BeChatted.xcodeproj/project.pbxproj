@@ -46,6 +46,7 @@
 		2ED59D5328938C97002D5493 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED59D5228938C97002D5493 /* ChannelsViewController.swift */; };
 		2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED59D5428938D06002D5493 /* ChatViewController.swift */; };
 		2ED59D5728938D7F002D5493 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED59D5628938D7F002D5493 /* MainWindowController.swift */; };
+		2EDA0ACF28F7D6D70020105F /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDA0ACE28F7D6D70020105F /* MessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		2ED59D5228938C97002D5493 /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		2ED59D5428938D06002D5493 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2ED59D5628938D7F002D5493 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		2EDA0ACE28F7D6D70020105F /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				2ED59D5428938D06002D5493 /* ChatViewController.swift */,
 				2ED59D5228938C97002D5493 /* ChannelsViewController.swift */,
 				2E8EE18228EFF84400A3C5C2 /* ChannelCellView.swift */,
+				2EDA0ACE28F7D6D70020105F /* MessageCell.swift */,
 				2E161F71289389600069D748 /* Assets.xcassets */,
 				2E161F73289389600069D748 /* Main.storyboard */,
 				2E161F76289389600069D748 /* BeChatted.entitlements */,
@@ -395,6 +398,7 @@
 				2E5E1BBB28F53328001BD8D1 /* Message.swift in Sources */,
 				2ED59D5528938D06002D5493 /* ChatViewController.swift in Sources */,
 				2E67DDEA28AB4D19009775FC /* LoginViewController.swift in Sources */,
+				2EDA0ACF28F7D6D70020105F /* MessageCell.swift in Sources */,
 				2E889E5F28DEF9A200B2BCB2 /* AddChannelViewController.swift in Sources */,
 				2E8A6EE328CEFA5200AE0B51 /* FindUserByEmail.swift in Sources */,
 				2E11D8AD28ED4E72003CC71B /* MessageService.swift in Sources */,

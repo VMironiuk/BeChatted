@@ -15,8 +15,11 @@ class ChannelCellView: NSTableCellView {
         super.draw(dirtyRect)
     }
     
-    func configure(with channel: Channel, isSelected: Bool) {
+    func configure(with channel: Channel, isSelected: Bool, isUnread: Bool) {
         channelNameTextField.stringValue = "#\(channel.name)"
+        channelNameTextField.font = isUnread
+            ? NSFont.boldSystemFont(ofSize: 15)
+            : NSFont.systemFont(ofSize: 13)
         
         wantsLayer = true
         if isSelected {

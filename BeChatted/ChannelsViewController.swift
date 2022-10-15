@@ -15,6 +15,7 @@ class ChannelsViewController: NSViewController {
     
     private var selectedRow: Int = .zero
     private var channels: [Channel] = []
+    private var unreadChannelIds: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,16 @@ class ChannelsViewController: NSViewController {
             case .failure(let error):
                 print("Send/Fetch message error: \(error)")
             }
+        }
+        
+        WebSocketService.shared.fetchMessage { [weak self] result in
+            guard AuthService.shared.isLoggedIn,
+                  let self = self,
+                  let message = try? result.get(),
+                  message.channelId != self.channels[self.selectedRow].id else { return }
+            
+            self.unreadChannelIds.append(message.channelId)
+            self.tableView.reloadData()
         }
     }
     
@@ -106,12 +117,15 @@ extension ChannelsViewController: NSTableViewDelegate {
         let id = NSUserInterfaceItemIdentifier(rawValue: "ChannelCell")
         let cellView = tableView.makeView(withIdentifier: id, owner: nil) as? ChannelCellView
         let isSelected = selectedRow == row
-        cellView?.configure(with: channels[row], isSelected: isSelected)
+        let channel = channels[row]
+        let isUnread = unreadChannelIds.contains(channel.id)
+        cellView?.configure(with: channel, isSelected: isSelected, isUnread: isUnread)
         return cellView
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         selectedRow = tableView.selectedRow
+        unreadChannelIds = unreadChannelIds.filter { $0 != channels[selectedRow].id }
         tableView.reloadData()
         
         let channel = channels[selectedRow]

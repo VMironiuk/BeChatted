@@ -55,6 +55,20 @@ class ChatViewController: NSViewController {
         if let window = messageTextField.window, let fieldEditor = window.fieldEditor(true, for: messageTextField) as? NSTextView {
             fieldEditor.insertionPointColor = .unemphasizedSelectedTextBackgroundColor
         }
+        
+        WebSocketService.shared.fetchMessage { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let message):
+                guard message.channelId == self.channel?.id, AuthService.shared.isLoggedIn else { return }
+                print("Send/Fetch message successfully!")
+                self.messages.append(message)
+                self.tableView.reloadData()
+                self.tableView.scrollRowToVisible(self.messages.count - 1)
+            case .failure(let error):
+                print("Send/Fetch message error: \(error)")
+            }
+        }
     }
     
     @objc private func onChannelDidChange(_ notification: Notification) {
@@ -65,10 +79,11 @@ class ChatViewController: NSViewController {
         messages.removeAll()
         
         MessageService.shared.loadMessages(by: channel.id) { [weak self] result in
-            guard let isSuccess = try? result.get(), isSuccess else { return }
-            self?.messages = MessageService.shared.messages
+            guard let self = self, let isSuccess = try? result.get(), isSuccess else { return }
+            self.messages = MessageService.shared.messages
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self.tableView.reloadData()
+                self.tableView.scrollRowToVisible(self.messages.count - 1)
             }
         }
     }

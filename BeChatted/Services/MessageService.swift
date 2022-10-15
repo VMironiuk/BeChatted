@@ -102,39 +102,6 @@ final class MessageService {
     }
     
     func sendMessage(_ message: AddMessage, completion: @escaping (Result<Bool, Error>) -> Void) {
-        guard let url = URL(string: "\(Constants.URL.baseURL)\(Constants.Endpoint.addMessage)"),
-              let httpBody = try? JSONEncoder().encode(message) else { return }
-
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
-        urlRequest.httpBody = httpBody
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("Bearer \(AuthService.shared.authToken)", forHTTPHeaderField: "Authorization")
-
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            if let error = error {
-                print("[sendMessage]: Error:")
-                print("    \(error.localizedDescription)")
-                print()
-                completion(.failure(error))
-                return
-            }
-
-            if let response = response as? HTTPURLResponse {
-                print("[sendMessage]: Response:")
-                print("    Status Code: \(response.statusCode)")
-                print()
-            }
-
-            if let data = data {
-                print("[sendMessage]: Data:")
-                print("    \(String(decoding: data, as: UTF8.self))")
-                print()
-                completion(.success(true))
-                return
-            }
-
-            completion(.success(false))
-        }.resume()
+        WebSocketService.shared.addMessage(message)
     }
 }

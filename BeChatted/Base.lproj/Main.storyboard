@@ -948,16 +948,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="adK-uE-zPG">
-                                <rect key="frame" x="18" y="256" width="82" height="24"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="#general" id="3Lj-qt-etG">
+                                <rect key="frame" x="18" y="256" width="114" height="24"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Please log in" id="3Lj-qt-etG">
                                     <font key="font" metaFont="system" size="20"/>
                                     <color key="textColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1qC-uS-nGy">
-                                <rect key="frame" x="106" y="258" width="411" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Let's talk about general topics " id="Wca-Nb-oZH">
+                                <rect key="frame" x="138" y="258" width="379" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="Wca-Nb-oZH">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1054,7 +1054,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dnj-vX-a4n">
                                                                     <rect key="frame" x="103" y="72" width="72" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Oct 13, 2022" id="s8i-lw-HvB">
-                                                                        <font key="font" metaFont="system" size="11"/>
+                                                                        <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>

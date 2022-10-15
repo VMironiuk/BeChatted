@@ -33,13 +33,19 @@ class ChatViewController: NSViewController {
         messageContainerView.layer?.borderColor = NSColor(named: "ChannelColor")?.cgColor
         messageContainerView.layer?.cornerRadius = 5
         
-        channelNameLabel.stringValue = ""
+        channelNameLabel.stringValue = "Please log in"
         channelDescriptionLabel.stringValue = ""
         
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(onChannelDidChange(_:)),
             name: Constants.Notification.Name.channelDidChange,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onLoggedInUserDidChange(_:)),
+            name: Constants.Notification.Name.loggedInUserDidChange,
             object: nil)
     }
     
@@ -64,6 +70,13 @@ class ChatViewController: NSViewController {
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
+        }
+    }
+    
+    @objc private func onLoggedInUserDidChange(_ notification: Notification) {
+        if !AuthService.shared.isLoggedIn {
+            channelNameLabel.stringValue = "Please log in"
+            channelDescriptionLabel.stringValue = ""
         }
     }
     

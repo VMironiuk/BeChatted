@@ -14,6 +14,7 @@ class ChannelsViewController: NSViewController {
     @IBOutlet private weak var tableView: NSTableView!
     
     private var selectedRow: Int = .zero
+    private var channels: [Channel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +48,16 @@ class ChannelsViewController: NSViewController {
             MessageService.shared.loadChannels { [weak self] result in
                 guard let isSuccess = try? result.get(), isSuccess else { return }
                 DispatchQueue.main.async {
+                    self?.channels = MessageService.shared.channels
                     self?.tableView.reloadData()
                     self?.sendFirstChannelIfNeeded()
                 }
             }
         } else {
             userNameLabel.stringValue = ""
+            
+            channels.removeAll()
+            tableView.reloadData()
         }
     }
     
@@ -74,7 +79,7 @@ class ChannelsViewController: NSViewController {
 
 extension ChannelsViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        MessageService.shared.channels.count
+        channels.count
     }
 }
 
@@ -83,7 +88,7 @@ extension ChannelsViewController: NSTableViewDelegate {
         let id = NSUserInterfaceItemIdentifier(rawValue: "ChannelCell")
         let cellView = tableView.makeView(withIdentifier: id, owner: nil) as? ChannelCellView
         let isSelected = selectedRow == row
-        cellView?.configure(with: MessageService.shared.channels[row], isSelected: isSelected)
+        cellView?.configure(with: channels[row], isSelected: isSelected)
         return cellView
     }
     
@@ -91,7 +96,7 @@ extension ChannelsViewController: NSTableViewDelegate {
         selectedRow = tableView.selectedRow
         tableView.reloadData()
         
-        let channel = MessageService.shared.channels[selectedRow]
+        let channel = channels[selectedRow]
         let userInfo = [Constants.UserInfoKey.channel: channel]
         NotificationCenter.default.post(
             name: Constants.Notification.Name.channelDidChange,

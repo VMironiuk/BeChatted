@@ -31,6 +31,24 @@ class ChannelsViewController: NSViewController {
             object: nil)
     }
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        WebSocketService.shared.fetchChannel { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let channel):
+                guard AuthService.shared.isLoggedIn else { return }
+                print("Add/Fetch channel successfully!")
+                self.channels.append(channel)
+                self.tableView.reloadData()
+                self.tableView.scrollRowToVisible(self.channels.count - 1)
+            case .failure(let error):
+                print("Send/Fetch message error: \(error)")
+            }
+        }
+    }
+    
     private func sendFirstChannelIfNeeded() {
         guard let channel = MessageService.shared.channels.first else { return }
         

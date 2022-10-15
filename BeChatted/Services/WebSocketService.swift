@@ -35,6 +35,21 @@ class WebSocketService: NSObject {
         socket.emit("newChannel", channelName, channelDescription)
     }
     
+    func fetchChannel(completion: @escaping (Result<Channel, Error>) -> Void) {
+        socket.on("channelCreated") { array, _ in
+            guard let channelTitle = array[0] as? String,
+                  let channelDescription = array[1] as? String,
+                  let channelId = array[2] as? String else {
+                return { completion(.failure(NSError(domain: "Fetch/Add channel error", code: 1000))) }()
+            }
+            
+            completion(.success(Channel(
+                id: channelId,
+                name: channelTitle,
+                description: channelDescription)))
+        }
+    }
+    
     func addMessage(_ message: AddMessage) {
         socket.emit(
             "newMessage",

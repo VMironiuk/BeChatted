@@ -77,6 +77,9 @@ class ChatViewController: NSViewController {
         if !AuthService.shared.isLoggedIn {
             channelNameLabel.stringValue = "Please log in"
             channelDescriptionLabel.stringValue = ""
+            
+            messages.removeAll()
+            tableView.reloadData()
         }
     }
     

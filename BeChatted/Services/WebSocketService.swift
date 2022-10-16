@@ -85,4 +85,19 @@ class WebSocketService: NSObject {
                 timeStamp: timestamp)))
         }
     }
+    
+    func emitStartTyping(userName: String, channelId: String) {
+        socket.emit("startType", userName, channelId)
+    }
+    
+    func emitStopTyping(userName: String) {
+        socket.emit("stopType", userName)
+    }
+    
+    func fetchTypingUsers(_ completion: @escaping (Result<[String: String], Error>) -> Void) {
+        socket.on("userTypingUpdate") { array, _ in
+            guard let typingUsers = array[0] as? [String: String] else { return }
+            completion(.success(typingUsers))
+        }
+    }
 }

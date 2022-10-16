@@ -965,7 +965,7 @@
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zn7-Gu-bPt">
                                 <rect key="frame" x="18" y="4" width="499" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Tom is typing ..." id="VdJ-3D-bmo">
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="VdJ-3D-bmo">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

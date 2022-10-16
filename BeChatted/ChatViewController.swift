@@ -18,6 +18,7 @@ class ChatViewController: NSViewController {
     
     private var channel: Channel?
     private var messages: [Message] = []
+    private var isTyping: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class ChatViewController: NSViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        messageTextField.delegate = self
         
         messageContainerView.wantsLayer = true
         messageContainerView.layer?.borderWidth = 1
@@ -69,6 +71,26 @@ class ChatViewController: NSViewController {
                 print("Send/Fetch message error: \(error)")
             }
         }
+        
+        WebSocketService.shared.fetchTypingUsers { [weak self] result in
+            guard let usersTyping = try? result.get() else { return }
+            self?.handleUsersTyping(usersTyping)
+        }
+    }
+    
+    private func handleUsersTyping(_ usersTyping: [String: String]) {
+        var names: String = ""
+        var usersTypingCount: Int = .zero
+        for (userName, channelId) in usersTyping {
+            guard channelId == channel?.id, userName != AuthService.shared.currentUser.name else { continue }
+            names = names.isEmpty ? userName : "\(names), \(userName)"
+            usersTypingCount += 1
+        }
+        
+        guard !names.isEmpty else { return { userTypingLabel.stringValue = "" }() }
+        let verb = usersTypingCount == 1 ? "is" : "are"
+        let finalText = "\(names) \(verb) typing..."
+        userTypingLabel.stringValue = finalText
     }
     
     @objc private func onChannelDidChange(_ notification: Notification) {
@@ -127,6 +149,8 @@ class ChatViewController: NSViewController {
             }
         }
         
+        
+        WebSocketService.shared.emitStopTyping(userName: AuthService.shared.currentUser.name)
         messageTextField.stringValue = ""
     }
 }
@@ -144,5 +168,19 @@ extension ChatViewController: NSTableViewDelegate {
         let message = messages[row]
         cell?.configure(with: message)
         return cell
+    }
+}
+
+extension ChatViewController: NSTextFieldDelegate {
+    func controlTextDidChange(_ obj: Notification) {
+        if messageTextField.stringValue == "" {
+            isTyping = false
+            WebSocketService.shared.emitStopTyping(userName: AuthService.shared.currentUser.name)
+        }
+        else {
+            guard !isTyping, let channel = channel else { return }
+            isTyping = true
+            WebSocketService.shared.emitStartTyping(userName: AuthService.shared.currentUser.name, channelId: channel.id)
+        }
     }
 }

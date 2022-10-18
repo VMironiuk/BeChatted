@@ -15,6 +15,7 @@ class MainWindowController: NSWindowController {
         toolbar.showsBaselineSeparator = false
         window?.titlebarAppearsTransparent = true
         window?.titleVisibility = .hidden
+        window?.minSize = NSSize(width: 950, height: 600)
         window?.toolbar = toolbar
         window?.backgroundColor = NSColor(named: "ToolbarColor")
     }

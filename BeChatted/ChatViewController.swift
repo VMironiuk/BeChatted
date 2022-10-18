@@ -49,15 +49,7 @@ class ChatViewController: NSViewController {
             selector: #selector(onLoggedInUserDidChange(_:)),
             name: Constants.Notification.Name.loggedInUserDidChange,
             object: nil)
-    }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        
-        if let window = messageTextField.window, let fieldEditor = window.fieldEditor(true, for: messageTextField) as? NSTextView {
-            fieldEditor.insertionPointColor = .unemphasizedSelectedTextBackgroundColor
-        }
-        
+                
         WebSocketService.shared.fetchMessage { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -75,6 +67,14 @@ class ChatViewController: NSViewController {
         WebSocketService.shared.fetchTypingUsers { [weak self] result in
             guard let usersTyping = try? result.get() else { return }
             self?.handleUsersTyping(usersTyping)
+        }
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        if let window = messageTextField.window, let fieldEditor = window.fieldEditor(true, for: messageTextField) as? NSTextView {
+            fieldEditor.insertionPointColor = .unemphasizedSelectedTextBackgroundColor
         }
     }
     

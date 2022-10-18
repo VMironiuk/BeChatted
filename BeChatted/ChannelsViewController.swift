@@ -30,10 +30,6 @@ class ChannelsViewController: NSViewController {
             selector: #selector(onLoggedInUserDidChange(_:)),
             name: Constants.Notification.Name.loggedInUserDidChange,
             object: nil)
-    }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
         
         WebSocketService.shared.fetchChannel { [weak self] result in
             guard let self = self else { return }
@@ -58,6 +54,10 @@ class ChannelsViewController: NSViewController {
             self.unreadChannelIds.append(message.channelId)
             self.tableView.reloadData()
         }
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
     }
     
     private func sendFirstChannelIfNeeded() {

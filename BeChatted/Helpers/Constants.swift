@@ -33,7 +33,7 @@ struct Constants {
     struct URL {
         private init() {}
         
-        static let baseURL = "http://localhost:3005"
+        static let baseURL = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as! String
     }
     
     struct Endpoint {
